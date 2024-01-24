@@ -633,7 +633,7 @@ export default function Home() {
 			
 				<div className="row mt-1">
 					<div className="col-md-10 mt-1 text-left footer-create-text">
-						Copyright © 2021 Forex. Made with ❤ by creation art
+						Copyright © 2021 7TravelMoney
 					</div>
 
 					<div className="col-md-2 mt-1 footer-social text-left">
