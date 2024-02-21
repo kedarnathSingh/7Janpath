@@ -71,7 +71,7 @@ export default function Home() {
     <div className="top-banner-sec-main">
 			<div className="top-tab-nav-sec">
 				<ul>
-					<li><img src="images/tab-icon-1.svg"/> <span>Currency</span></li>
+					<li className="active-tab"><img src="images/tab-icon-1.svg"/> <span>Currency</span></li>
 					<li><img src="images/tab-icon-2.svg"/> <span>Transfer Money Abroad</span></li>
 					<li><img src="images/tab-icon-3.svg"/> <span>Reload/ Unload Forex Card</span></li>
 					<li><img src="images/tab-icon-4.svg"/> <span>International Sim Card</span></li>
