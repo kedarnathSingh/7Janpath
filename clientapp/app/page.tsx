@@ -1,9 +1,14 @@
-import Image from 'next/image'
+import Image from 'next/image';
+import BannerComponent from './components/banner/BannerComponent';
+import HeadersComponent from './components/headers/HeadersComponent';
+import FooterComponent from './components/footer/FooterComponent';
+import BodyComponent from './components/body/BodyComponent';
 
 export default function Home() {
   return (
     <main className="wrapper">
-        <div className="top-header-strip">
+		<HeadersComponent />
+        {/* <div className="top-header-strip">
         <div className="custom-container d-flex justify-content-between">
           <ul className="top-contect-sec">
             <li className="pe-5"><img className="pt-2" src="images/call-top.svg"/> <span>+918882382276</span></li>
@@ -66,9 +71,9 @@ export default function Home() {
 				</div>
 			  </nav>
 				
-		</header>
+		</header> */}
 
-    <div className="top-banner-sec-main">
+    {/* <div className="top-banner-sec-main">
 			<div className="top-tab-nav-sec">
 				<ul>
 					<li className="active-tab"><img src="images/tab-icon-1.svg"/> <span>Currency</span></li>
@@ -232,9 +237,11 @@ export default function Home() {
 				
 			</div>
 			</div>
-		</div>
+		</div> */}
+	<BannerComponent />
+	<BodyComponent />
 
-    <main className="main-middle-content-section pt-5 pb-5">
+    {/* <main className="main-middle-content-section pt-5 pb-5">
 
     <div className="container-fluid pb-5">	
 				<div className="custom-container">
@@ -586,9 +593,9 @@ export default function Home() {
 				</div>
 			</div>
 
-    </main>
+    </main> */}
 
-    <footer className="footer-home-main">
+    {/* <footer className="footer-home-main">
 			
 			<div className="row">
 					
@@ -644,7 +651,9 @@ export default function Home() {
 								<a href="">	<i className="fab fa-google-plus-square"></i></a>
 					</div>
 		</div>
-	</footer>
+	</footer> */}
+
+	<FooterComponent />
 
     </main>
   )

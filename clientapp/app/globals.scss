@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @import './../public/styles/base.scss';
 
@@ -708,7 +711,7 @@ body{
 	align-items: center;
 	justify-content: center;
 }
-.top-tab-nav-sec li{
+.top-tab-nav-sec li {
 	// border-right: 1px solid rgba(5, 81, 115, 0.1);
 	// border-bottom: 1px solid rgba(5, 81, 115, 0.1);
 	font-size: 12px;
@@ -726,7 +729,12 @@ body{
 	margin: 0px;
 	padding: 10px;
 	cursor: pointer;
+	&:hover {
+		box-shadow: 0 2px 4px 0 rgba(7,71,103,0.40);
+		border-bottom: solid 4px $primary-color-a;
+	}
 }
+
 .active-tab{
 	box-shadow: 0 2px 4px 0 rgba(7,71,103,0.40);
     border-bottom: solid 4px $primary-color-a;
