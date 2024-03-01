@@ -1,4 +1,5 @@
 import next from "next";
+import Link from "next/link";
 
 const HeadersComponent = () => {
     return(
@@ -9,8 +10,12 @@ const HeadersComponent = () => {
             <li><img className="pt-2" src="images/message-top.svg"/> <span>info@7janpathforex.com</span></li>
           </ul>
           <ul className="login-nav-sec">
-            <li className="pe-4">Sign In</li>
-            <li className="ms-4">Log In</li>
+            <li className="pe-4">
+				<Link className="normal-link" href={'/user-registration'}>register</Link>
+				</li>
+            <li className="ms-4">
+				<Link  className="normal-link" href={'/login'}>Login</Link>
+				</li>
           </ul>
         </div>
       </div>
@@ -18,19 +23,21 @@ const HeadersComponent = () => {
       <header className="header-custom-main">
 			<nav className="navbar navbar-expand-lg custom-nav ">
 				<div className="container-fluid">
-				  <a className="navbar-brand" href="#">
+				  <Link className="navbar-brand" href={'/home'}>
 					<img className="pt-2" src="images/logo.svg"/>
-				  </a>
+				  </Link>
 				  <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				  </button>
 				  <div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
 					  <li className="nav-item">
-						<a className="nav-link active" aria-current="page" href="#">Home</a>
+						{/* <a className="nav-link active" aria-current="page" href="#">Home</a> */}
+						<Link className="nav-link active" href={'/home'} aria-current="page" >Home</Link>
 					  </li>
 					  <li className="nav-item">
-						<a className="nav-link" href="#">About us</a>
+						{/* <a className="nav-link" href="#">About us</a> */}
+						<Link className="nav-link" href={'/about-us'}> About Us</Link>
 					  </li>
 					
 					  <li className="nav-item dropdown">
@@ -45,21 +52,28 @@ const HeadersComponent = () => {
 						</ul>
 					  </li>
 					  <li className="nav-item">
-						<a className="nav-link" href="#">Share & Security </a>
+						{/* <a className="nav-link" href="#">Share & Security </a> */}
+						<Link className="nav-link" href={'/share-security'}>Share & Security</Link>
 					  </li>
 					  <li className="nav-item">
-						<a className="nav-link" href="#">Financial Services</a>
+						{/* <a className="nav-link" href="#">Financial Services</a> */}
+						<Link className="nav-link" href={'financial-services'}>Financial Services</Link>
 					  </li>
 					  <li className="nav-item">
-						<a className="nav-link" href="#">Send Money Abroad </a>
+						{/* <a className="nav-link" href="#">Send Money Abroad </a> */}
+						<Link className="nav-link" href={'/send-money-abroad'}>Send Money Abroad </Link>
 					  </li>
 					  <li className="nav-item">
-						<a className="nav-link" href="#">Contact us </a>
+						{/* <a className="nav-link" href="#">Contact us </a> */}
+						<Link className="nav-link" href={'/contact-us'}>Contact us </Link>
 					  </li>
 					</ul>
 					<form className="d-flex ms-4">
-					  <button className="rate-btn-top me-4" > <img className="me-2" src="images/rates-icon.svg"/> <span>Rates</span></button>
-					  <button className="offer-btn-top"><img className="me-2" src="images/offer-icon.svg"/> <span>Offers</span></button>
+					  <button className="rate-btn-top me-4" > <img className="me-2" src="images/rates-icon.svg"/> <span>
+						<Link className="rates-link" href={'/rates'}>Rates</Link></span></button>
+					  <button className="offer-btn-top"><img className="me-2" src="images/offer-icon.svg"/> <span>
+						<Link className="offers-link" href={'/offers'} >Offers</Link>
+						</span></button>
 					</form>
 				  </div>
 				</div>
