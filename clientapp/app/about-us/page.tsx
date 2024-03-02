@@ -5,7 +5,7 @@ export default function(){
     return(
         <div>
           <HeadersComponent />
-          <div style={{height: '300px'}}>
+          <div style={{height: '360px'}}>
 
           </div>
           <FooterComponent />
