@@ -1,14 +1,14 @@
 import FooterComponent from "../components/footer/FooterComponent";
 import HeadersComponent from "../components/headers/HeadersComponent";
 
-export default function(){
+const aboutUs = () =>{
     return(
         <div>
           <HeadersComponent />
           <div style={{height: '360px'}}>
-
           </div>
           <FooterComponent />
         </div>
     )
 };
+export default aboutUs;

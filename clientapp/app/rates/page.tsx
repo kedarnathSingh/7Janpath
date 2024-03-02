@@ -1,7 +1,7 @@
 import FooterComponent from "../components/footer/FooterComponent";
 import HeadersComponent from "../components/headers/HeadersComponent";
 
-export default function(){
+const rates = () =>{
     return(
         <div>
           <HeadersComponent />
@@ -12,3 +12,5 @@ export default function(){
         </div>
     )
 };
+ 
+export default rates;

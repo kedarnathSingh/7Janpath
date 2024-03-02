@@ -8,16 +8,16 @@ export const metadata= {
   title: 'Travel Money',
   description: 'Currency exchange, travel insuarance, send money abroad'
 };
-export default function Home() {
+export default function App() {
   return (
-  //   <main className="wrapper">
-	// <HeadersComponent />
-	// <BannerComponent />
-	// <BodyComponent />
-	// <FooterComponent />
-  //   </main>
-  <div>
-    <Home></Home>
-  </div>
+    <main className="wrapper">
+	<HeadersComponent />
+	<BannerComponent />
+	<BodyComponent />
+	<FooterComponent />
+    </main>
+  // <div>
+    
+  // </div>
   )
 }

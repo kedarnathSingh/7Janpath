@@ -3,7 +3,7 @@ import BodyComponent from "../components/body/BodyComponent";
 import FooterComponent from "../components/footer/FooterComponent";
 import HeadersComponent from "../components/headers/HeadersComponent";
 
-export default function(){
+const home = () =>{
     return(
         <main className="wrapper">
 	<HeadersComponent />
@@ -13,3 +13,4 @@ export default function(){
     </main>
     )
 }
+export default home;
