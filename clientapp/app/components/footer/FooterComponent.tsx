@@ -8,14 +8,19 @@ const FooterComponent = () => {
 			<div className="row">
 					
 				<div className="col-md-5 footer-home-menu">
-					<h3>About Us</h3>
-					<p>At 7 Janpath Forex, it’s all about our esteemed customers. They are at the forefront of services we offer. Our Forex rates are the best in the city.</p>
+					{/* <h3>About Us</h3>
+					<p>At 7 Janpath Forex, it’s all about our esteemed customers. They are at the forefront of services we offer. Our Forex rates are the best in the city.</p> */}
 					<div className="col-md-3 footer-home-menu pt-4">
-						<h3>Our Services </h3>
+						<h3>Quick Links</h3>
 							<ul>
-									<li><a className="dropdown-item" href="">Item 1</a></li>
-									<li><a className="dropdown-item" href="">Item 1</a></li>
-									
+									<li><a className="dropdown-item" href="">Special Offers</a></li>
+									<li><a className="dropdown-item" href="">Currencies</a></li>
+									<li><a className="dropdown-item" href="">Currency Converter</a></li>
+									<li><a className="dropdown-item" href="">Careers</a></li>
+									<li><a className="dropdown-item" href="">faqs</a></li>
+									<li><a className="dropdown-item" href="">our Policies</a></li>
+									<li><a className="dropdown-item" href="">Press release</a></li>
+									<li><a className="dropdown-item" href="">Sitemap</a></li>	
 							</ul>
 					</div>
 						
@@ -23,13 +28,13 @@ const FooterComponent = () => {
 					<div className="col-md-3 footer-home-menu">
 						<h3>Our Services </h3>
 							<ul>
-									<li><a className="dropdown-item" href="">Item 1</a></li>
-									<li><a className="dropdown-item" href="">Item 1</a></li>
-									<li><a className="dropdown-item" href="">Item 1</a></li>
-									<li><a className="dropdown-item" href="">Item 1</a></li>
-									<li><a className="dropdown-item" href="">Item 1</a></li>
-									<li><a className="dropdown-item" href="">Item 1</a></li>
-									<li><a className="dropdown-item" href="">Item 1</a></li>
+									<li><a className="dropdown-item" href="">Home</a></li>
+									<li><a className="dropdown-item" href="">About Us</a></li>
+									<li><a className="dropdown-item" href="">Share & security</a></li>
+									<li><a className="dropdown-item" href="">Financial Services</a></li>
+									<li><a className="dropdown-item" href="">Send Money Abroad</a></li>
+									<li><a className="dropdown-item" href="">Travel insurance</a></li>
+									<li><a className="dropdown-item" href="">International Simcard</a></li>
 									
 							</ul>
 					</div>
