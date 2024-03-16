@@ -3,13 +3,16 @@ import { useState } from "react";
 
 const CurrencyExchange = () => {
 
+    let cuurentCurrencyrate = 55;
+    let commision = 0.2;
+
     const [currencyExchangeForm, setCurrencyExchangeForm] = useState({
         selectCity: "Select City", 
         userCurrency: "Select currency",
         requiredCurrency: "select currency",
         currencyNotes: "Currency Notes",
-        useramount: "",
-        vendoramount: ""
+        useramount: 0,
+        vendoramount: 0
 
       });
     const handleChange = (event:any ) => {
@@ -74,7 +77,7 @@ const CurrencyExchange = () => {
             
             <div className="total-book-order">
                 <h2>Total Amount</h2>
-                <h2>Rs. {currencyExchangeForm.vendoramount}</h2>
+                <h2>Rs. {(currencyExchangeForm.vendoramount) - (currencyExchangeForm.useramount * commision)}</h2>
             </div>
             <button className="book-btn-set" type="submit">Book This Order</button>
             </form>
