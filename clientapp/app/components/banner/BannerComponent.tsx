@@ -1,4 +1,5 @@
 import next from "next";
+import CurrencyExchange from "../currencyExchange";
 
 const BannerComponent = () => {
     return(
@@ -75,8 +76,8 @@ const BannerComponent = () => {
               <span className="visually-hidden">Next</span>
             </button>
           </div>
-
-          <div className="book-order-search-box">
+         <CurrencyExchange />
+          {/* <div className="book-order-search-box">
                 <div className="book-order-tab-box">
                     <form>
                         <p className="book-order-input-box">
@@ -133,7 +134,7 @@ const BannerComponent = () => {
                     </div>
                     <button className="book-btn-set">Book This Order</button>
                 </div>
-          </div>
+          </div> */}
     </div>
 
 <div className="top-banner-card-main">
