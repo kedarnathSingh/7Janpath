@@ -1,11 +1,23 @@
-import Image from 'next/image'
+import Image from 'next/image';
+import BannerComponent from './components/banner/BannerComponent';
+import HeadersComponent from './components/headers/HeadersComponent';
+import FooterComponent from './components/footer/FooterComponent';
+import BodyComponent from './components/body/BodyComponent';
 
-export default function Home() {
+export const metadata= {
+  title: 'Travel Money',
+  description: 'Currency exchange, travel insuarance, send money abroad'
+};
+export default function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="text-danger">
-        test
-      </div>
+    <main className="wrapper">
+	<HeadersComponent />
+	<BannerComponent />
+	<BodyComponent />
+	<FooterComponent />
     </main>
+  // <div>
+    
+  // </div>
   )
 }
