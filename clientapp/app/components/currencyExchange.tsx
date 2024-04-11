@@ -2,6 +2,7 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import Select, { components } from "react-select";
 
 
 const people = [
@@ -24,6 +25,19 @@ const people = [
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
     },
   ];
+
+  const currencyoptions = [
+    { label: "Us dollar", value: 1, avatar: 'us-dollar' },
+    { label: "Aus dollar", value: 2, avatar: 'us-dollar' },
+    { label: "Euro", value: 3, avatar: 'us-dollar' },
+    { label: "UK Paund", value: 4, avatar: 'us-dollar' },
+    { label: "Canadian dollar", value: 5, avatar: 'us-dollar' }
+  ];
+
+  const Input = (props: any) => {
+    const { autoComplete = props.autoComplete } = props.selectProps;
+    return <components.Input {...props} autoComplete={autoComplete} />;
+  };
 
   function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(' ')
@@ -51,6 +65,17 @@ const CurrencyExchange = () => {
         setCurrencyExchangeForm((prevFormData) => ({ ...prevFormData, [name]: value }));
     }
 
+    const call_API = async() => {
+      try{
+        const res = await fetch( 'API URL');
+        const data = await res.json();
+        console.log(data);
+
+      }catch(err){
+        console.log(err);
+      }
+    }
+
     const handlecurrencyExchnageSubmit = (event: any) => {
         event.preventDefault();
         console.log(`City: ${currencyExchangeForm.selectCity}, 
@@ -64,7 +89,7 @@ const CurrencyExchange = () => {
   
 
     return(
-        <div className="book-order-search-box">
+        <div onLoad={call_API} className="book-order-search-box">
         <div className="book-order-tab-box">
             <form onSubmit={handlecurrencyExchnageSubmit}>
                 <p className="book-order-input-box">
@@ -167,6 +192,13 @@ const CurrencyExchange = () => {
         </>
       )}
     </Listbox>
+   <div className='mt-2 mb-3'>
+   <Select
+      components={{ Input }}
+      options={currencyoptions}
+    />
+   </div>
+    
 
               {/* Currency notes code end */}
 
