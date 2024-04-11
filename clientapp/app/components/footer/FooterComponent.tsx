@@ -1,4 +1,5 @@
 import next from "next";
+import './FooterComponent.scss';
 
 const FooterComponent = () => {
     return(
@@ -41,8 +42,9 @@ const FooterComponent = () => {
 					
 					<div className="col-md-3 footer-home-menu">
 							<h3>More Way to Contact </h3>
-							<p><img src="images/location.svg"/> MZ9007 Ansal Fortune Arcade, Sector-18, Noida, UP-201301</p>
-								<p><img src="images/phone.svg"/> Mobile: +91-9810474842</p>
+							<p><img src="images/location.svg"/> MZ-007, Ansal Fortune Arcade, Sector-18, Noida, UP-201301</p>
+								<p><img src="images/phone.svg"/> Mobile: +91- 9810474842, 9910710835</p>
+								<p>Email: <a className="email-id" href="mailto:Business@7travelmoney.com?cc=info@7janpath.com&subject=Forex%20Enquiry&body=Forex%20enquiry" target="_top">Business@7travelmoney.com</a></p>
 								<p><img src="images/time.svg"/> Working Timing - 10.00 AM to 7 PM  </p>
 								
 					</div>
