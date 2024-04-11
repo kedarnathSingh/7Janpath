@@ -7,7 +7,7 @@ const HeadersComponent = () => {
         <div className="custom-container d-flex justify-content-between">
           <ul className="top-contect-sec">
             <li className="pe-5"><img className="pt-2" src="images/call-top.svg"/> <span>+91-9810474842</span></li>
-            <li><img className="pt-2" src="images/message-top.svg"/> <span>info@7janpathforex.com</span></li>
+            <li><img className="pt-2" src="images/message-top.svg"/> <span>Business@7travelmoney.com</span></li>
           </ul>
           <ul className="login-nav-sec">
             <li className="pe-4">
