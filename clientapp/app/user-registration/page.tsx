@@ -1,8 +1,15 @@
+import FooterComponent from "../components/footer/FooterComponent";
+import HeadersComponent from "../components/headers/HeadersComponent";
+
 const userReg = () =>{
     return(
         <div>
-            User registration
+        <HeadersComponent />
+        <div style={{height: '360px'}}>
+        <img className="under-maintenance" src="images/site-under-maintenance.png" alt="under-maintenence" />
         </div>
+        <FooterComponent />
+      </div>
     )
 };
 

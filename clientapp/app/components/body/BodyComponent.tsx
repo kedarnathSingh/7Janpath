@@ -1,4 +1,5 @@
 import next from "next";
+import './BodyComponent.scss';
 
 const BodyComponent = () => {
     return(
@@ -7,11 +8,10 @@ const BodyComponent = () => {
     <div className="container-fluid pb-5">	
 				<div className="custom-container">
 					
-					<table className="table custom-table-set">
+					{/* <table className="table custom-table-set">
 						<thead>
 						  <tr>
 							<th scope="col">Currency</th>
-							<th scope="col">Amount</th>
 							<th scope="col">Buy</th>
 							<th scope="col">Sell</th>
 							<th scope="col">Our Rate</th>
@@ -20,42 +20,36 @@ const BodyComponent = () => {
 						<tbody>
 						  <tr>
 							<td><img className="me-3" src="images/flag-1.svg"/>US Dollar (USD)</td>
-							<td>₹ 79.97</td>
 							<td> <span className="text-green"> + 0.32 %</span></td>
 							<td><span className="text-green"> ₹+ 0.22 %</span></td>
 							<td>₹ 69.97</td>
 						  </tr>
 						  <tr>
 							<td> <img className="me-3" src="images/flag-2.svg"/> Euro (EUR)</td>
-							<td>₹ 79.97</td>
 							<td> <span className="text-green"> + 0.32 %</span></td>
 							<td><span className="text-green"> ₹+ 0.22 %</span></td>
 							<td>₹ 69.97</td>
 						  </tr>
 						  <tr>
 							<td><img className="me-3" src="images/flag-1.svg"/> Ringgit (MYR)</td>
-							<td>₹ 79.97</td>
 							<td> <span className="text-green"> + 0.32 %</span></td>
 							<td><span className="text-green"> ₹+ 0.22 %</span></td>
 							<td>₹ 69.97</td>
 						  </tr>
 						  <tr>
 							<td> <img className="me-3" src="images/flag-3.svg"/>US Dollar (USD)</td>
-							<td>₹ 79.97</td>
 							<td> <span className="text-red"> + 0.32 %</span></td>
 							<td><span className="text-red"> ₹+ 0.22 %</span></td>
 							<td>₹ 69.97</td>
 						  </tr>
 						  <tr>
 							<td> <img className="me-3" src="images/flag-4.svg"/> Sterling Pound (GBP)</td>
-							<td>₹ 79.97</td>
 							<td> <span className="text-green"> + 0.32 %</span></td>
 							<td><span className="text-green"> ₹+ 0.22 %</span></td>
 							<td>₹ 69.97</td>
 						  </tr>
 						  <tr>
 							<td> <img className="me-3" src="images/flag-2.svg"/> British Pound</td>
-							<td>₹ 79.97</td>
 							<td> <span className="text-red"> + 0.32 %</span></td>
 							<td><span className="text-red"> ₹+ 0.22 %</span></td>
 							<td>₹ 69.97</td>
@@ -63,21 +57,20 @@ const BodyComponent = () => {
 						  
 						  <tr>
 							<td> <img className="me-3" src="images/flag-1.svg"/>Euro (EUR)</td>
-							<td>₹ 79.97</td>
 							<td> <span className="text-green"> + 0.32 %</span></td>
 							<td><span className="text-green"> ₹+ 0.22 %</span></td>
 							<td>₹ 69.97</td>
 						  </tr>
 						</tbody>
-					  </table>
+					  </table> */}
 				</div>
 			</div>
 
       <div className="container-fluid pt-5 pb-5">	
 				<div className="custom-container">
 					<div className="head-container-sec mb-5">
-						<h5>Most Popular Currency Tools</h5>
-						<h2>Set Up & Exchanges Money Form  Your Cards in a Minute</h2>
+						<h5>Empowering Your financial Transactions</h5>
+						<h2>Expert Currency Exchange</h2>
 					</div>
 
 						
@@ -201,8 +194,8 @@ const BodyComponent = () => {
 			<div className="container-fluid pt-5 pb-5">	
 				<div className="custom-container">
 					<div className="head-container-sec mt-5 mb-5 pb-2">
-						<h5>Most Popular Currency Tools</h5>
-						<h2>Set Up & Exchanges Money Form  Your Cards in a Minute</h2>
+						<h5>Effortless Currency Exchange</h5>
+						<h2>Reliable Service, Competitive Rates</h2>
 					</div>
 					
 					<div className="row mb-5 pb-5">
@@ -299,8 +292,8 @@ const BodyComponent = () => {
         <div className="container-fluid pt-5 pb-5">	
 				<div className="custom-container">
 					<div className="head-container-sec mt-5 mb-5 pb-1">
-						<h5>Most Popular Currency Tools</h5>
-						<h2>Set Up & Exchanges Money Form  Your Cards in a Minute</h2>
+						<h5>Discover What Our Clients Say</h5>
+						<h2>Testimonials That Inspire</h2>
 					</div>
 
 						
@@ -309,40 +302,40 @@ const BodyComponent = () => {
 							<div className="testimonial-card-main">
 								<div className="testimonial-head-sec">
 									<figure>
-										<img src="images/user-img.png"/>
+									<img className="user-icon" src="images/user-icon.png" alt="user" />
 									</figure>
 									<div className="testimonial-details">
-										<h3>Satish Singh</h3>
+										<h3>Nitish Sah</h3>
 										<p><img src="images/star-img.png"/></p>
 									</div>
 									<img className="coman-texticon-set" src="images/coman-text.svg"/>
 								</div>
-								<p>Filler text is text that shares some characteristics of a real written text, but is random or otherwise generated. It may be used to display a sample of fonts,  Filler text is text that shares some. </p>
+								<p>If you want the best exchange rate, quick service and awesome attitude, then this is the go-to for all your requirements! They respond immediately, self experienced. Do try! </p>
 							</div>
 						</div>
 						<div className="col-lg-4">
 							<div className="testimonial-card-main">
 								<div className="testimonial-head-sec">
 									<figure>
-										<img src="images/user-img.png"/>
+										<img className="user-icon" src="images/user-icon.png" alt="user" />
 									</figure>
 									<div className="testimonial-details">
-										<h3>Satish Singh</h3>
+										<h3>Rahul Mishra</h3>
 										<p><img src="images/star-img.png"/></p>
 									</div>
 									<img className="coman-texticon-set" src="images/coman-text.svg"/>
 								</div>
-								<p>Filler text is text that shares some characteristics of a real written text, but is random or otherwise generated. It may be used to display a sample of fonts,  Filler text is text that shares some. </p>
+								<p>Highly recommend this place. Very professional and responsive. They have good knowledge and I had the best experience here.</p>
 							</div>
 						</div>
 						<div className="col-lg-4">
 							<div className="testimonial-card-main">
 								<div className="testimonial-head-sec">
 									<figure>
-										<img src="images/user-img.png"/>
+									<img className="user-icon" src="images/user-icon.png" alt="user" />
 									</figure>
 									<div className="testimonial-details">
-										<h3>Satish Singh</h3>
+										<h3>John Alba</h3>
 										<p><img src="images/star-img.png"/></p>
 									</div>
 									<img className="coman-texticon-set" src="images/coman-text.svg"/>
