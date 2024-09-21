@@ -13,7 +13,7 @@ const aboutUs = () =>{
         <div>
           <HeadersComponent />
           <div style={{height: '360px'}}>
-          <img className="under-maintenance" src="images/site-under-maintenance.png" alt="under-maintenence" />
+          <img className="under-maintenance" src="images/about-us.png" alt="under-maintenence" />
           </div>
           <FooterComponent />
         </div>
