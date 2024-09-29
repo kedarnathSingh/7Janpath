@@ -11,7 +11,7 @@ const HeadersComponent = () => {
           </ul>
           <ul className="login-nav-sec">
             <li className="pe-4">
-				<Link className="normal-link" href={'/user-registration'}>register</Link>
+				<Link className="normal-link" href={'/user-registration'}>Register</Link>
 				</li>
             <li className="ms-4">
 				<Link  className="normal-link" href={'/login'}>Login</Link>

@@ -1,12 +1,33 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const CurrencyExchange = () => {
 
     let cuurentCurrencyrate = 55;
     let commision = 0.2;
+    const [citiesData, setCitiesData] = useState([]);
+    const [currencyWantData, setCurrencyWantData] = useState([]);
+    useEffect(() => {
+    //     async function fetchPosts() {
+    //       let res = await fetch(`${process.env.basePath}/cities`)
+    //       let data = await res.json()
+    //       setData(data)
+    //     }
+    //     fetchPosts()
+    //   }, []);
+        fetch(`${process.env.basePath}/cities`)
+          .then((res) => res.json())
+          .then((citiesData) => {
+            setCitiesData(citiesData)
+          })
+          fetch(`${process.env.basePath}/settings/exchange-rates`)
+          .then((res) => res.json())
+          .then((currencyWantData) => {
+            setCurrencyWantData(currencyWantData)
+          })
+      }, []);
 
-    const [currencyExchangeForm, setCurrencyExchangeForm] = useState({
+    const [currencyExchangeForm, setCurrencyExchangeForm] = useState({  
         selectCity: "Select City", 
         userCurrency: "Select currency",
         requiredCurrency: "select currency",
@@ -29,6 +50,7 @@ const CurrencyExchange = () => {
         User Amount: ${currencyExchangeForm.useramount},
         vendor Amount: ${currencyExchangeForm.vendoramount}`
         );
+        console.log(process.env.basePath);
     };
   
 
@@ -39,25 +61,25 @@ const CurrencyExchange = () => {
                 <p className="book-order-input-box">
                         <select name="selectCity" id="selectCity" value={currencyExchangeForm.selectCity} onChange={handleChange}>
                             <option value="Select City">Select City</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Delhi">Noida</option>
+                            {citiesData.map((city: any) => (
+                                <option value={city.id}>{city.name}</option>
+                            ))}
                         </select>
                 </p>
                 <div className="book-order-input-box book-cus-inputset">
                     <p className="mb-0">
                         <label>Currency You Have</label>
                         <select id="userCurrency" name="userCurrency" value={currencyExchangeForm.userCurrency} onChange={handleChange} >
-                            <option value="default">Select currency</option>
-                            <option value="US dollar">US dollar</option>
-                            <option value="AUS dollar">AUS dollar</option>
+                            <option value="INR">INR</option>
                         </select>
                     </p>
                     <p className="mb-0">
                         <label>Currency You Want</label>
                         <select id="requiredCurrency" name="requiredCurrency" value={currencyExchangeForm.requiredCurrency} onChange={handleChange}>
                         <option value="default">Select currency</option>
-                        <option value="US dollar">US dollar</option>
-                        <option value="AUS dollar">AUS dollar</option>
+                        {currencyWantData.map((currency: any) => (
+                                <option value={currency}>{currency.name} ({currency.symbol})</option>
+                            ))}
                         </select>
                     </p>
                 </div>
@@ -69,10 +91,10 @@ const CurrencyExchange = () => {
                     </select>
                 </p>
                 <p className="book-order-input-box">
-                    <input name="useramount" value={currencyExchangeForm.useramount} onChange={handleChange} type="text" placeholder="Enter your amount"/>
+                    <input name="useramount" value={currencyExchangeForm.useramount} onChange={handleChange} type="text" placeholder="Forex Amount"/>
                 </p>
                 <p className="book-order-input-box">
-                    <input name="vendoramount" value={currencyExchangeForm.vendoramount} onChange={handleChange} type="text" placeholder="Amount"/>
+                    <input name="vendoramount" value={currencyExchangeForm.vendoramount} onChange={handleChange} type="text" placeholder="INR Amount"/>
                 </p>
             
             <div className="total-book-order">
