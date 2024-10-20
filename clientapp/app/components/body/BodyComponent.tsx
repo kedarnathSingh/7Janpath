@@ -9,61 +9,6 @@ const BodyComponent = () => {
     <div className="container-fluid pb-5">	
 				<div className="custom-container">
 					<Currencylist></Currencylist>
-					{/* <table className="table custom-table-set">
-						<thead>
-						  <tr>
-							<th scope="col">Currency</th>
-							<th scope="col">Buy</th>
-							<th scope="col">Sell</th>
-							<th scope="col">Our Rate</th>
-						  </tr>
-						</thead>
-						<tbody>
-						  <tr>
-							<td><img className="me-3" src="images/flag-1.svg"/>US Dollar (USD)</td>
-							<td> <span className="text-green"> + 0.32 %</span></td>
-							<td><span className="text-green"> ₹+ 0.22 %</span></td>
-							<td>₹ 69.97</td>
-						  </tr>
-						  <tr>
-							<td> <img className="me-3" src="images/flag-2.svg"/> Euro (EUR)</td>
-							<td> <span className="text-green"> + 0.32 %</span></td>
-							<td><span className="text-green"> ₹+ 0.22 %</span></td>
-							<td>₹ 69.97</td>
-						  </tr>
-						  <tr>
-							<td><img className="me-3" src="images/flag-1.svg"/> Ringgit (MYR)</td>
-							<td> <span className="text-green"> + 0.32 %</span></td>
-							<td><span className="text-green"> ₹+ 0.22 %</span></td>
-							<td>₹ 69.97</td>
-						  </tr>
-						  <tr>
-							<td> <img className="me-3" src="images/flag-3.svg"/>US Dollar (USD)</td>
-							<td> <span className="text-red"> + 0.32 %</span></td>
-							<td><span className="text-red"> ₹+ 0.22 %</span></td>
-							<td>₹ 69.97</td>
-						  </tr>
-						  <tr>
-							<td> <img className="me-3" src="images/flag-4.svg"/> Sterling Pound (GBP)</td>
-							<td> <span className="text-green"> + 0.32 %</span></td>
-							<td><span className="text-green"> ₹+ 0.22 %</span></td>
-							<td>₹ 69.97</td>
-						  </tr>
-						  <tr>
-							<td> <img className="me-3" src="images/flag-2.svg"/> British Pound</td>
-							<td> <span className="text-red"> + 0.32 %</span></td>
-							<td><span className="text-red"> ₹+ 0.22 %</span></td>
-							<td>₹ 69.97</td>
-						  </tr>
-						  
-						  <tr>
-							<td> <img className="me-3" src="images/flag-1.svg"/>Euro (EUR)</td>
-							<td> <span className="text-green"> + 0.32 %</span></td>
-							<td><span className="text-green"> ₹+ 0.22 %</span></td>
-							<td>₹ 69.97</td>
-						  </tr>
-						</tbody>
-					  </table> */}
 				</div>
 			</div>
 
