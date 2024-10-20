@@ -171,7 +171,10 @@ body{
 	width: 90%;
 }
 .w-95{
-	width: 95%;
+	width: 95% !important;
+}
+.w-100{
+	width: 100% !important;
 }
 .h-100{
 	min-height: 100px;
@@ -674,22 +677,46 @@ body{
 	color: #000;
 }
 .custom-table-set{
-	border: 1px #dcdcdc solid;
+	// border: 1px #dcdcdc solid;
 	padding: 0px 0px;
 	margin: 0px 0px;
 }
 .custom-table-set tr th{
 	background: #000;
-	padding: 25px 20px;
-	font-size: 16px;
+	padding: 12px 20px;
+	font-size: 1em;
 	font-weight: 500;
 	color: #fff;
+	&:first-child{
+		border-radius: 10px 0px 0px 0px;
+	}
+	&:last-child{
+		border-radius: 0px 10px 0px 0px;
+	}
 }
 .custom-table-set tr td{
-	padding: 15px 20px;
-	font-size: 14px;
+	padding: 8px 20px;
+	font-size: 1rem;
 	font-weight: 400;
 	color: #2C3134;
+	border-left: 1px #dcdcdc solid;
+}
+.custom-table-set tr td:last-child{
+	padding: 8px 20px;
+	font-size: 1rem;
+	font-weight: 400;
+	color: #2C3134;
+	border-right: 1px #dcdcdc solid;
+}
+.custom-table-set tr:last-of-type{
+	td{
+		& :first-child{
+			border-radius: 0px 0px 0px 10px;
+		}
+		& :last-child{
+		border-radius: 0px 0px 10px 0px;
+		}
+	}
 }
 .top-banner-sec-main{
 	background: url("../public/images/banner-bg.png")no-repeat;
@@ -1041,4 +1068,8 @@ body{
 }
 .header-custom-main{
 background-color: #f1f1f1;
+}
+.small{
+	color: #0067DB;
+	font-size: 0.75rem !important;
 }
