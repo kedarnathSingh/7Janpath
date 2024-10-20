@@ -1,5 +1,6 @@
 import next from "next";
 import './BodyComponent.scss';
+import Currencylist from "./currency-list";
 
 const BodyComponent = () => {
     return(
@@ -7,7 +8,7 @@ const BodyComponent = () => {
 
     <div className="container-fluid pb-5">	
 				<div className="custom-container">
-					
+					<Currencylist></Currencylist>
 					{/* <table className="table custom-table-set">
 						<thead>
 						  <tr>
