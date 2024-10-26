@@ -1,5 +1,6 @@
 import next from "next";
 import CurrencyExchange from "../currencyExchange";
+import Currencylist from "../body/currency-list";
 
 const BannerComponent = () => {
     return(
@@ -77,64 +78,9 @@ const BannerComponent = () => {
             </button>
           </div>
          <CurrencyExchange />
-          {/* <div className="book-order-search-box">
-                <div className="book-order-tab-box">
-                    <form>
-                        <p className="book-order-input-box">
-                            <select>
-                                <option>item1</option>
-                                <option>item1</option>
-                                <option>item1</option>
-                                <option>item1</option>
-                                <option>item1</option>
-                            </select>
-                        </p>
-                        <div className="book-order-input-box book-cus-inputset">
-                            <p className="mb-0">
-                                <label>Currency You Have</label>
-                                <select>
-                                    <option>item1</option>
-                                    <option>item1</option>
-                                    <option>item1</option>
-                                    <option>item1</option>
-                                    <option>item1</option>
-                                </select>
-                            </p>
-                            <p className="mb-0">
-                                <label>Currency You Want</label>
-                                <select>
-                                    <option>item1</option>
-                                    <option>item1</option>
-                                    <option>item1</option>
-                                    <option>item1</option>
-                                    <option>item1</option>
-                                </select>
-                            </p>
-                        </div>
-                    
-                        <p className="book-order-input-box">
-                            <select>
-                                <option>item1</option>
-                                <option>item1</option>
-                                <option>item1</option>
-                                <option>item1</option>
-                                <option>item1</option>
-                            </select>
-                        </p>
-                        <p className="book-order-input-box">
-                            <input type="text" placeholder="7janpath Amount"/>
-                        </p>
-                        <p className="book-order-input-box">
-                            <input type="text" placeholder="7janpath Amount"/>
-                        </p>
-                    </form>
-                    <div className="total-book-order">
-                        <h2>Total Amount</h2>
-                        <h2>Rs. 0.00</h2>
-                    </div>
-                    <button className="book-btn-set">Book This Order</button>
-                </div>
-          </div> */}
+         <div className="custom-container">
+					<Currencylist></Currencylist>
+				</div>
     </div>
 
 <div className="top-banner-card-main">

@@ -7,9 +7,9 @@ const BodyComponent = () => {
         <main className="main-middle-content-section pt-5 pb-5">
 
     <div className="container-fluid pb-5">	
-				<div className="custom-container">
+				{/* <div className="custom-container">
 					<Currencylist></Currencylist>
-				</div>
+				</div> */}
 			</div>
 
       <div className="container-fluid pt-5 pb-5">	
