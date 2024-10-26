@@ -300,8 +300,9 @@ body{
 }
 
 .custom-container{
-	width: 94%;
+	width: 96%;
 	margin: 0px auto;
+	overflow-x: auto;
 }
 /*================ top navigation start here =========================*/
 
@@ -695,29 +696,29 @@ body{
 	}
 }
 .custom-table-set tr td{
-	padding: 8px 20px;
+	padding: 0;
 	font-size: 1rem;
 	font-weight: 400;
 	color: #2C3134;
 	border-left: 1px #dcdcdc solid;
 }
 .custom-table-set tr td:last-child{
-	padding: 8px 20px;
+	padding: 0;
 	font-size: 1rem;
 	font-weight: 400;
 	color: #2C3134;
 	border-right: 1px #dcdcdc solid;
 }
-.custom-table-set tr:last-of-type{
-	td{
-		& :first-child{
-			border-radius: 0px 0px 0px 10px;
-		}
-		& :last-child{
-		border-radius: 0px 0px 10px 0px;
-		}
-	}
-}
+// .custom-table-set tr:last-of-type{
+// 	td{
+// 		& :first-child{
+// 			border-radius: 0px 0px 0px 10px;
+// 		}
+// 		& :last-child{
+// 		border-radius: 0px 0px 10px 0px;
+// 		}
+// 	}
+// }
 .top-banner-sec-main{
 	background: url("../public/images/banner-bg.png")no-repeat;
 	width: 100%;
@@ -1072,4 +1073,8 @@ background-color: #f1f1f1;
 .small{
 	color: #0067DB;
 	font-size: 0.75rem !important;
+}
+.td-list-header, .td-list-item{
+	border-bottom: #ccc solid 1px;
+	padding: 0.6rem 0.75rem;
 }

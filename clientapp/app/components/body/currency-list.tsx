@@ -30,25 +30,44 @@ export default function Currencylist(){
         <div className="head-container-sec mb-5 w-100">
             <h2>Today's Buy & Sell rate</h2>  
         <table className="table custom-table-set">
-						<thead>
+						{/* <thead>
 						  <tr>
 							<th scope="col">Currency</th>
 							<th scope="col">Buy</th>
 							<th scope="col">Sell</th>
-							<th scope="col">Rate</th>
+							
 						  </tr>
-						</thead>
+						</thead> */}
 						<tbody>
-                        {
+                        
+                          
+                          <tr>
+                          <td>
+                                <div className="td-list-header">Currency</div>
+                                <div className="list-buy td-list-item">Buy</div>
+                                <div className="list-sell td-list-item">Sell</div>
+                            </td>
+                          {
     currency.map((item: { id: number; name: string, symbol: string, rate: number, priority: number, buy_rate: number, sell_rate: number }) => (
-						  <tr>
-							<td>{item.name} <small className="small">{item.symbol}</small></td>
-							<td>{item.buy_rate}</td>
-							<td>{item.sell_rate}</td>
-							<td>{item.rate}</td>
+						
+							<td>
+                                <div className="td-list-item">
+                                 {item.name} {/*<small className="small">{item.symbol}</small> */}
+                                </div>
+                                <div className="td-list-item">
+                                {item.buy_rate}
+                                </div>
+                                <div className="td-list-item">
+                                {item.sell_rate}
+                                </div>
+                                {/* {item.name} <small className="small">{item.symbol}</small> */}
+                                </td>
+                        ))
+                    }
+							{/* <td>{item.buy_rate}</td>
+							<td>{item.sell_rate}</td> */}
 						  </tr>
-                             ))
-}
+                             
 						  
 						</tbody>
 					  </table>
