@@ -77,7 +77,7 @@ const CurrencyExchange = () => {
                         <label>Currency You Want</label>
                         <select id="requiredCurrency" name="requiredCurrency" value={currencyExchangeForm.requiredCurrency} onChange={handleChange}>
                         <option value="default">Select currency</option>
-                        {currencyWantData.map((currency: any) => (
+                        {currencyWantData && currencyWantData.map((currency: any) => (
                                 <option value={currency}>{currency.name} ({currency.symbol})</option>
                             ))}
                         </select>
