@@ -2,18 +2,25 @@
 import { useState, useEffect } from "react";
 
 const CurrencyExchange = () => {
+
+    let cuurentCurrencyrate = 55;
+    let commision = 0.2;
     const [citiesData, setCitiesData] = useState([]);
     const [currencyWantData, setCurrencyWantData] = useState([]);
-    const [selectedCurrency, setSelectedCurrency] = useState();
-    const [userAmount, setUserAmount] = useState();
-    const [vendorAmount, setVendorAmount] = useState();
     useEffect(() => {
+    //     async function fetchPosts() {
+    //       let res = await fetch(`${process.env.basePath}/cities`)
+    //       let data = await res.json()
+    //       setData(data)
+    //     }
+    //     fetchPosts()
+    //   }, []);
         fetch(`${process.env.basePath}/cities`)
           .then((res) => res.json())
           .then((citiesData) => {
             setCitiesData(citiesData)
           })
-          fetch(`${process.env.basePath}/currencies`)
+          fetch(`${process.env.basePath}/settings/exchange-rates`)
           .then((res) => res.json())
           .then((currencyWantData) => {
             setCurrencyWantData(currencyWantData)
@@ -25,26 +32,14 @@ const CurrencyExchange = () => {
         userCurrency: "Select currency",
         requiredCurrency: "select currency",
         currencyNotes: "Currency Notes",
-        useramount: '',
-        vendoramount: ''
+        useramount: 0,
+        vendoramount: 0
 
       });
     const handleChange = (event:any ) => {
         const {name, value} = event.target;
         setCurrencyExchangeForm((prevFormData) => ({ ...prevFormData, [name]: value }));
-        if(name === 'requiredCurrency') {
-           const currency = currencyWantData.find((data: any) => data.id == event.target.value);
-            setSelectedCurrency(currency);
-           if(currencyExchangeForm.useramount) {
-                const amount = (event.target.value * selectedCurrency?.buy_rate).toFixed(2);
-                setVendorAmount(amount); 
-           }       
-        }
-        if(name === 'useramount') {
-            const amount = (event.target.value * selectedCurrency?.buy_rate).toFixed(2);
-            setVendorAmount(amount);        
-        }
-    } 
+    }
 
     const handlecurrencyExchnageSubmit = (event: any) => {
         event.preventDefault();
@@ -82,13 +77,8 @@ const CurrencyExchange = () => {
                         <label>Currency You Want</label>
                         <select id="requiredCurrency" name="requiredCurrency" value={currencyExchangeForm.requiredCurrency} onChange={handleChange}>
                         <option value="default">Select currency</option>
-<<<<<<< HEAD
                         {currencyWantData && currencyWantData.map((currency: any) => (
                                 <option value={currency}>{currency.name} ({currency.symbol})</option>
-=======
-                        {currencyWantData.map((currency: any) => (
-                                <option value={currency.id}>{currency.name} ({currency.symbol})</option>
->>>>>>> 488172cf76524be2de783334b459ef6530c537f7
                             ))}
                         </select>
                     </p>
@@ -96,20 +86,20 @@ const CurrencyExchange = () => {
             
                 <p className="book-order-input-box">
                     <select id="currencyNotes" name="currencyNotes" value={currencyExchangeForm.currencyNotes} onChange={handleChange}>
+                        <option value="Forex Card">Forex Card</option>
                         <option value="Currency Notes">Currency Notes</option>
                     </select>
                 </p>
                 <p className="book-order-input-box">
                     <input name="useramount" value={currencyExchangeForm.useramount} onChange={handleChange} type="text" placeholder="Forex Amount"/>
-                    {selectedCurrency?.buy_rate ? `Rate = Rs. ${selectedCurrency?.buy_rate}` : '' }
                 </p>
                 <p className="book-order-input-box">
-                    <input name="vendoramount" value={vendorAmount} onChange={handleChange} type="text" placeholder="INR Amount" readOnly />
+                    <input name="vendoramount" value={currencyExchangeForm.vendoramount} onChange={handleChange} type="text" placeholder="INR Amount"/>
                 </p>
             
             <div className="total-book-order">
                 <h2>Total Amount</h2>
-                <h2>Rs. {vendorAmount}</h2>
+                <h2>Rs. {(currencyExchangeForm.vendoramount) - (currencyExchangeForm.useramount * commision)}</h2>
             </div>
             <button className="book-btn-set" type="submit">Book This Order</button>
             </form>
