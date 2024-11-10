@@ -27,7 +27,7 @@ export default function Currencylist(){
 
     }, [])
     return(
-        <div className="head-container-sec mb-5 w-100">
+        <div className="head-container-sec container-fluid">
             <h2>Today's Buy & Sell rate</h2> 
             <div className="row">
               <div className="col-lg-12 mt-3">  
