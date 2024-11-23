@@ -1078,6 +1078,8 @@ background-color: #f1f1f1;
 	border-bottom: #ccc solid 1px;
 	padding: 0.6rem 0.75rem;
 }
-// .td-list-head{
-
-// }
+.book-order-modal{
+	&.show .modal-dialog{
+		transform: translate(0px, -11%) !important;
+	}
+}

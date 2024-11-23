@@ -5,6 +5,6 @@ const nextConfig = {}
 module.exports = {
     distDir: 'build',
     env: {
-      basePath: 'http://localhost:3000',
+      basePath: 'https://api.7travelmoney.com',
     },
   }
