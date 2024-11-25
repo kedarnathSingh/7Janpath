@@ -23,12 +23,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  // background: linear-gradient(
+  //     to bottom,
+  //     transparent,
+  //     rgb(var(--background-end-rgb))
+  //   )
+  //   rgb(var(--background-start-rgb));
 }
 
 body{
@@ -861,6 +861,12 @@ body{
 	background: #fff;
 	padding: 25px;
 	margin: 0px 0px;
+	.book-order-tab-heading{
+		font-size: 100%;
+		font-weight: 600;
+		color: #055173;
+		margin: 0px 0px 20px 0px;
+	}
 }
 .book-btn-set{
 	background: #407BFF;
@@ -1007,9 +1013,9 @@ body{
 
 @media screen and (max-width: 768px) {
 
-  .collapse {
-    visibility: collapse;
-  }
+  // .collapse {
+  //   visibility: collapse;
+  // }
   .top-contect-sec{
     display: none;
   }

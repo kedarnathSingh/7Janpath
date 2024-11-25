@@ -1,5 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
+import Recaptcha from 'react-google-recaptcha';
+import CountryCodeSelector from './CountryCode/CountryCodeSelector';
 
 const CurrencyExchange = () => {
     const [citiesData, setCitiesData] = useState([]);
@@ -8,6 +10,13 @@ const CurrencyExchange = () => {
     const [userAmount, setUserAmount] = useState('');
     const [vendorAmount, setVendorAmount] = useState('');
     const [isCustomModalOpen, setIsCustomModalOpen] = useState(false)
+    const [isCaptchaVerified, setIsCaptchaVerified] = useState<string | null>();
+    const [selectedCountryCode, setSelectedCountryCode] = useState<any>('+91');
+    const [errors, setErrors] = useState<{ [key: string]: string }>({});
+    const [isFormValid, setIsFormValid] = useState(false);
+    const styles = {
+        error: { color: 'red' }
+    }
     useEffect(() => {
         fetch(`${process.env.basePath}/cities`)
             .then((res) => res.json())
@@ -18,13 +27,15 @@ const CurrencyExchange = () => {
             .then((res) => res.json())
             .then((currencyWantData) => {
                 setCurrencyWantData(currencyWantData)
+                const usd = currencyWantData.find((currency: any) => currency.name === 'USD');
+                setSelectedCurrency(usd);
             })
     }, []);
 
     const [currencyExchangeForm, setCurrencyExchangeForm] = useState({
         selectCity: "Select City",
         userCurrency: "INR",
-        requiredCurrency: "select currency",
+        requiredCurrency: "17",
         currencyNotes: "Currency Notes",
         userAmount: '',
         vendorAmount: '',
@@ -35,13 +46,14 @@ const CurrencyExchange = () => {
     });
     const handleChange = (event: any) => {
         const { name, value } = event.target;
-        // console.log('name', name);
-        // console.log('value', value);
+        if ((name === 'userAmount' || name === 'mobile') && isNaN(value)) {
+            return;
+        }
         
         setCurrencyExchangeForm((prevFormData) => ({ ...prevFormData, [name]: value }));
         if (name === 'requiredCurrency') {
             const currency = currencyWantData.find((data: any) => data.id == value);
-            console.log(currency);
+
             if (currency) {
                 setSelectedCurrency(currency);
             }
@@ -55,7 +67,7 @@ const CurrencyExchange = () => {
             const amount = (value * selectedCurrency?.buy_rate).toFixed(2);
             setVendorAmount(amount);
             setCurrencyExchangeForm((prevFormData) => ({ ...prevFormData, ['userAmount']: value, ['vendorAmount']: amount }));
-        }
+        }        
     }
 
     const handlecurrencyExchnagePopup = (event: any) => {
@@ -65,6 +77,10 @@ const CurrencyExchange = () => {
     
     const handlecurrencyExchnageSubmit = (event: any) => {
         event.preventDefault();
+        validateForm();
+        if (!isCaptchaVerified || !isFormValid) {
+            return;
+        }
         const cityName:any = citiesData.find((city: any) => city.id == currencyExchangeForm.selectCity);
         const currentYouWant:any = currencyWantData.find((currency: any) => currency.id == currencyExchangeForm.requiredCurrency);
         fetch(`${process.env.basePath}/enquiry`, {
@@ -75,7 +91,7 @@ const CurrencyExchange = () => {
             body: JSON.stringify({
                 "name": currencyExchangeForm.name,
                 "email": currencyExchangeForm.email,
-                "mobile": Number(currencyExchangeForm.mobile),
+                "mobile": selectedCountryCode + Number(currencyExchangeForm.mobile),
                 "address": currencyExchangeForm.address,
                 "city": cityName?.name,
                 "currency_you_have": currencyExchangeForm.userCurrency,
@@ -100,6 +116,36 @@ const CurrencyExchange = () => {
         })
     };
 
+    const validateForm = () => {
+        let errors: { [key: string]: string } = {};
+        const { name, email, mobile} = currencyExchangeForm;
+
+        if (!name) {
+            errors.name = 'Name is required.';
+        } else {
+            errors.name = '';
+        }
+
+        if (!email) {
+            errors.email = 'Email is required.';
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            errors.email = 'Email is invalid.';
+        } else {
+            errors.email = '';
+        }
+
+        if (!mobile) {
+            errors.mobile = 'Mobile is required.';
+        } else if (mobile.length < 10) {
+            errors.mobile = 'Mobile must be at least 10 characters.';
+        } else {
+            errors.mobile = '';
+        }
+
+        setErrors(errors);
+        setIsFormValid(Object.keys(errors).length === 0);
+    };
+
     const resetStates = () => {
         setCurrencyExchangeForm({
             selectCity: "Select City",
@@ -118,11 +164,16 @@ const CurrencyExchange = () => {
         setVendorAmount('');
     }
 
+    const handleSelectCountryCode = (countryCode: string) => {
+        setSelectedCountryCode(countryCode);
+    };
+
 
     return (
         <>
         <div className="book-order-search-box">
             <div className="book-order-tab-box">
+                <h2 className="book-order-tab-heading">Buy Forex Currency</h2>
                 <form method="post" onSubmit={handlecurrencyExchnagePopup}>
                     <p className="book-order-input-box">
                         <select name="selectCity" id="selectCity" value={currencyExchangeForm.selectCity} onChange={handleChange} required>
@@ -181,26 +232,38 @@ const CurrencyExchange = () => {
                     </div>
                     <form method="post" onSubmit={handlecurrencyExchnageSubmit}>
                         <div className="modal-body">
-                            <p className="book-order-input-box">
+                            <div className="book-order-input-box">
                                 <input type="text" id="Name" name="name" placeholder="Name" value={currencyExchangeForm.name} onChange={handleChange} required />
-                            </p>
-                            <p className="book-order-input-box">
-                                <input type="text" id="Email" name="email" placeholder="Email" value={currencyExchangeForm.email} onChange={handleChange} required />
-                            </p>
-                            <p className="book-order-input-box">
-                                <input type="text" id="Mobile" name="mobile" placeholder="Mobile" value={currencyExchangeForm.mobile} onChange={handleChange} required />
-                            </p>
-                            <p className="book-order-input-box">
+                                {errors.email && <p style={styles.error}>{errors.email}</p>}
+                            </div>
+                            <div className="book-order-input-box">
+                                <input type="email" id="Email" name="email" placeholder="Email" value={currencyExchangeForm.email} onChange={handleChange} required />
+                                {errors.email && <p style={styles.error}>{errors.email}</p>}
+                            </div>
+                            <div className="book-order-input-box book-cus-inputset">
+                                <div className="mb-0">
+                                    <CountryCodeSelector
+                                        countrySelectCallback={(countryCode) => handleSelectCountryCode(countryCode)}
+                                    />
+                                </div>
+                                <div className="mb-0">
+                                    <input type="text" id="Mobile" name="mobile" maxLength={10} minLength={10} placeholder="Mobile" value={currencyExchangeForm.mobile} onChange={handleChange} required />
+                                    {errors.mobile && <p style={styles.error}>{errors.mobile}</p>}
+                                </div>
+                            </div>
+                            <div className="book-order-input-box">
                                 <input type="text" id="Address" name="address" placeholder="Address" value={currencyExchangeForm.address} onChange={handleChange} required />
-                            </p>
+                            </div>
                         </div>
                         <div className="modal-footer">
+                            {process.env.captchaSiteKey && <Recaptcha sitekey={process.env.captchaSiteKey} onChange={setIsCaptchaVerified} className="mx-auto" />}
                             <button type="submit" className="btn btn-primary">Continue</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        {isCustomModalOpen && <div className="modal-backdrop fade show"></div>}
         </>
     )
 };

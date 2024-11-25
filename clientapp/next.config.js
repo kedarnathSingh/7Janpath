@@ -5,6 +5,8 @@ const nextConfig = {}
 module.exports = {
     distDir: 'build',
     env: {
-      basePath: 'https://api.7travelmoney.com',
+      basePath: process.env.BASE_PATH || 'localhost:3000',
+      captchaSiteKey: process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '',
+      captchaSecretKey: process.env.CAPTCHA_SECRET_KEY || ''
     },
   }

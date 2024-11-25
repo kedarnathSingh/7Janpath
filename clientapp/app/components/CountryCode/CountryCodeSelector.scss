@@ -1,0 +1,20 @@
+.country-code-select-container {
+  .react-select-container * {
+    font-size: 13px;
+    padding: 0px 0px;
+    margin: 0px 0px;
+  }
+  .react-select-container {
+    width: 150px;
+    .css-1jqq78o-placeholder {
+      padding-left: 10px;
+    }
+    .css-1nmdiq5-menu {
+      padding-left: 10px;
+    }
+    .css-1dimb5e-singleValue {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
