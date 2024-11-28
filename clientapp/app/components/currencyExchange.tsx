@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import Recaptcha from 'react-google-recaptcha';
 import CountryCodeSelector from './CountryCode/CountryCodeSelector';
 
@@ -234,7 +234,7 @@ const CurrencyExchange = () => {
                         <div className="modal-body">
                             <div className="book-order-input-box">
                                 <input type="text" id="Name" name="name" placeholder="Name" value={currencyExchangeForm.name} onChange={handleChange} required />
-                                {errors.email && <p style={styles.error}>{errors.email}</p>}
+                                {errors.name && <p style={styles.error}>{errors.name}</p>}
                             </div>
                             <div className="book-order-input-box">
                                 <input type="email" id="Email" name="email" placeholder="Email" value={currencyExchangeForm.email} onChange={handleChange} required />
@@ -252,7 +252,7 @@ const CurrencyExchange = () => {
                                 </div>
                             </div>
                             <div className="book-order-input-box">
-                                <input type="text" id="Address" name="address" placeholder="Address" value={currencyExchangeForm.address} onChange={handleChange} required />
+                                <textarea name="address" id="Address" minLength={10} rows={3} maxLength={1000} placeholder="Address" value={currencyExchangeForm.address} onChange={handleChange} required></textarea>
                             </div>
                         </div>
                         <div className="modal-footer">
