@@ -49,8 +49,6 @@ const CurrencyExchange = () => {
         if ((name === 'userAmount' || name === 'mobile') && isNaN(value)) {
             return;
         }
-        console.log('value', value);
-        console.log('name', name);
         
         
         setCurrencyExchangeForm((prevFormData) => ({ ...prevFormData, [name]: value }));
