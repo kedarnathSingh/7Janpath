@@ -15,7 +15,7 @@ const CurrencyExchange = () => {
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [isFormValid, setIsFormValid] = useState(false);
     const styles = {
-        error: { color: 'red' }
+        error: { color: 'red', paddingTop: '5px'}
     }
     useEffect(() => {
         fetch(`${process.env.basePath}/cities`)
@@ -49,16 +49,17 @@ const CurrencyExchange = () => {
         if ((name === 'userAmount' || name === 'mobile') && isNaN(value)) {
             return;
         }
+        console.log('value', value);
+        console.log('name', name);
+        
         
         setCurrencyExchangeForm((prevFormData) => ({ ...prevFormData, [name]: value }));
         if (name === 'requiredCurrency') {
-            const currency = currencyWantData.find((data: any) => data.id == value);
+            const currency:any = currencyWantData.find((data: any) => data.id == value);
 
             if (currency) {
+                const amount = (Number(userAmount) * currency?.buy_rate).toFixed(2);
                 setSelectedCurrency(currency);
-            }
-            if (currencyExchangeForm.userAmount) {
-                const amount = (value * selectedCurrency?.buy_rate).toFixed(2);
                 setVendorAmount(amount);
             }
         }
@@ -256,7 +257,11 @@ const CurrencyExchange = () => {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            {process.env.captchaSiteKey && <Recaptcha sitekey={process.env.captchaSiteKey} onChange={setIsCaptchaVerified} className="mx-auto" />}
+                            {process.env.captchaSiteKey && 
+                                (<div className="my-4">
+                                    <Recaptcha sitekey={process.env.captchaSiteKey} onChange={setIsCaptchaVerified} />
+                                </div>)
+                            }
                             <button type="submit" className="btn btn-primary">Continue</button>
                         </div>
                     </form>
