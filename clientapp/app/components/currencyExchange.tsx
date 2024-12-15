@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, use } from "react";
 import Recaptcha from 'react-google-recaptcha';
 import CountryCodeSelector from './CountryCode/CountryCodeSelector';
 
@@ -14,6 +14,20 @@ const CurrencyExchange = () => {
     const [selectedCountryCode, setSelectedCountryCode] = useState<any>('+91');
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [isFormValid, setIsFormValid] = useState(false);
+    const [isFirstForm, setIsFirstForm] = useState(false);
+    const [currencyExchangeForm, setCurrencyExchangeForm] = useState({
+        selectCity: "",
+        userCurrency: "INR",
+        requiredCurrency: "17",
+        currencyNotes: "Currency Notes",
+        userAmount: '',
+        vendorAmount: '',
+        name: '',
+        email: '',
+        mobile: '',
+        address: ''
+    });
+
     const styles = {
         error: { color: 'red', paddingTop: '5px'}
     }
@@ -32,24 +46,11 @@ const CurrencyExchange = () => {
             })
     }, []);
 
-    const [currencyExchangeForm, setCurrencyExchangeForm] = useState({
-        selectCity: "Select City",
-        userCurrency: "INR",
-        requiredCurrency: "17",
-        currencyNotes: "Currency Notes",
-        userAmount: '',
-        vendorAmount: '',
-        name: '',
-        email: '',
-        mobile: '',
-        address: ''
-    });
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         if ((name === 'userAmount' || name === 'mobile') && isNaN(value)) {
             return;
         }
-        
         
         setCurrencyExchangeForm((prevFormData) => ({ ...prevFormData, [name]: value }));
         if (name === 'requiredCurrency') {
@@ -66,18 +67,30 @@ const CurrencyExchange = () => {
             const amount = (value * selectedCurrency?.buy_rate).toFixed(2);
             setVendorAmount(amount);
             setCurrencyExchangeForm((prevFormData) => ({ ...prevFormData, ['userAmount']: value, ['vendorAmount']: amount }));
-        }        
+        }
     }
 
     const handlecurrencyExchnagePopup = (event: any) => {
         event.preventDefault();
+        setIsFirstForm(true);
+
+        const isValid = validateForm(true);
+        
+        if (!isValid) {
+            return;
+        }
         setIsCustomModalOpen(true);
+        setIsFirstForm(false);
     };
     
     const handlecurrencyExchnageSubmit = (event: any) => {
         event.preventDefault();
         validateForm();
-        if (!isCaptchaVerified || !isFormValid) {
+        if (!isFormValid) {
+            return;
+        }
+        if (!isCaptchaVerified) {
+            alert('Please verify the captcha');
             return;
         }
         const cityName:any = citiesData.find((city: any) => city.id == currencyExchangeForm.selectCity);
@@ -108,46 +121,68 @@ const CurrencyExchange = () => {
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             setIsCustomModalOpen(false);
             resetStates();
             alert('Order placed successfully');
         })
     };
 
-    const validateForm = () => {
+    const validateForm = useCallback((firstForm=false) => {
         let errors: { [key: string]: string } = {};
-        const { name, email, mobile} = currencyExchangeForm;
+        const { name, email, mobile, selectCity, userAmount } = currencyExchangeForm;
+        let isFirstFormValid = true;
 
-        if (!name) {
-            errors.name = 'Name is required.';
-        } else {
-            errors.name = '';
+        const errorsObj = errors;
+        
+        if(!firstForm) {
+            if (!name) {
+                errorsObj.name = 'Name is required.';
+            } else {
+                delete errorsObj.name;
+            }
+    
+            if (!email) {
+                errorsObj.email = 'Email is required.';
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                errorsObj.email = 'Email is invalid.';
+            } else {
+                delete errorsObj.email;
+            }
+    
+            if (!mobile) {
+                errorsObj.mobile = 'Mobile is required.';
+            } else if (mobile.length < 10) {
+                errorsObj.mobile = 'Mobile must be at least 10 characters.';
+            } else {
+                delete errorsObj.mobile;
+            }
+        } else  {
+            if (!selectCity) {
+                errorsObj.selectCity = 'selectCity is required.';
+                isFirstFormValid = false;
+            } else {
+                delete errorsObj.selectCity;
+                isFirstFormValid = true;
+            }
+            if (!userAmount) {
+                errorsObj.userAmount = 'selectCity is required.';
+                isFirstFormValid = false;
+            } else {
+                delete errorsObj.userAmount;
+                isFirstFormValid = true;
+            }
         }
 
-        if (!email) {
-            errors.email = 'Email is required.';
-        } else if (!/\S+@\S+\.\S+/.test(email)) {
-            errors.email = 'Email is invalid.';
-        } else {
-            errors.email = '';
-        }
+        setErrors(errorsObj);
+        const isValid = Object.keys(errorsObj).length === 0;
+        setIsFormValid(isValid);
+        return isFirstFormValid;
 
-        if (!mobile) {
-            errors.mobile = 'Mobile is required.';
-        } else if (mobile.length < 10) {
-            errors.mobile = 'Mobile must be at least 10 characters.';
-        } else {
-            errors.mobile = '';
-        }
-
-        setErrors(errors);
-        setIsFormValid(Object.keys(errors).length === 0);
-    };
+    }, [currencyExchangeForm]);
 
     const resetStates = () => {
         setCurrencyExchangeForm({
-            selectCity: "Select City",
+            selectCity: "",
             userCurrency: "INR",
             requiredCurrency: "select currency",
             currencyNotes: "Currency Notes",
@@ -167,6 +202,11 @@ const CurrencyExchange = () => {
         setSelectedCountryCode(countryCode);
     };
 
+    useEffect(() => {
+        if(isFirstForm) {
+            validateForm(true);
+        }
+    }, [currencyExchangeForm, isFirstForm, validateForm]);
 
     return (
         <>
@@ -175,23 +215,24 @@ const CurrencyExchange = () => {
                 <h2 className="book-order-tab-heading">Buy Forex Currency</h2>
                 <form method="post" onSubmit={handlecurrencyExchnagePopup}>
                     <p className="book-order-input-box">
-                        <select name="selectCity" id="selectCity" value={currencyExchangeForm.selectCity} onChange={handleChange} required>
+                        <select name="selectCity" id="selectCity" value={currencyExchangeForm.selectCity} onChange={handleChange}>
                             <option value="">Select City</option>
                             {citiesData.map((city: any) => (
                                 <option key={city.id} value={city.id}>{city.name}</option>
                             ))}
                         </select>
                     </p>
+                    {errors.selectCity && <p style={styles.error}>{errors.selectCity}</p>}
                     <div className="book-order-input-box book-cus-inputset">
                         <p className="mb-0">
                             <label htmlFor="userCurrency">Currency You Have</label>
-                            <select id="userCurrency" name="userCurrency" value={currencyExchangeForm.userCurrency} onChange={handleChange} required>
+                            <select id="userCurrency" name="userCurrency" value={currencyExchangeForm.userCurrency} onChange={handleChange}>
                                 <option value="INR">INR</option>
                             </select>
                         </p>
                         <p className="mb-0">
                             <label htmlFor="requiredCurrency">Currency You Want</label>
-                            <select id="requiredCurrency" name="requiredCurrency" value={currencyExchangeForm.requiredCurrency} onChange={handleChange} required>
+                            <select id="requiredCurrency" name="requiredCurrency" value={currencyExchangeForm.requiredCurrency} onChange={handleChange} >
                                 <option value="">Select currency</option>
                                 {currencyWantData.map((currency: any) => (
                                     <option key={currency.id} value={currency.id}>{currency.name} ({currency.symbol})</option>
@@ -201,14 +242,15 @@ const CurrencyExchange = () => {
                     </div>
 
                     <p className="book-order-input-box">
-                        <select id="currencyNotes" name="currencyNotes" value={currencyExchangeForm.currencyNotes} onChange={handleChange} required>
+                        <select id="currencyNotes" name="currencyNotes" value={currencyExchangeForm.currencyNotes} onChange={handleChange} >
                             <option value="Currency Notes">Currency Notes</option>
                         </select>
                     </p>
                     <p className="book-order-input-box">
-                        <input name="userAmount" value={userAmount} onChange={handleChange} type="text" placeholder="Forex Amount" required />
+                        <input name="userAmount" value={userAmount} onChange={handleChange} type="text" placeholder="Forex Amount" />
                         {selectedCurrency?.buy_rate ? `Rate = Rs. ${selectedCurrency?.buy_rate}` : ''}
                     </p>
+                    {errors.userAmount && <p style={styles.error}>{errors.userAmount}</p>}
                     <p className="book-order-input-box">
                         <input name="vendorAmount" value={vendorAmount} onChange={handleChange} type="text" placeholder="INR Amount" readOnly />
                     </p>
@@ -232,11 +274,11 @@ const CurrencyExchange = () => {
                     <form method="post" onSubmit={handlecurrencyExchnageSubmit}>
                         <div className="modal-body">
                             <div className="book-order-input-box">
-                                <input type="text" id="Name" name="name" placeholder="Name" value={currencyExchangeForm.name} onChange={handleChange} required />
+                                <input type="text" id="Name" name="name" placeholder="Name" value={currencyExchangeForm.name} onChange={handleChange} />
                                 {errors.name && <p style={styles.error}>{errors.name}</p>}
                             </div>
                             <div className="book-order-input-box">
-                                <input type="email" id="Email" name="email" placeholder="Email" value={currencyExchangeForm.email} onChange={handleChange} required />
+                                <input type="email" id="Email" name="email" placeholder="Email" value={currencyExchangeForm.email} onChange={handleChange} />
                                 {errors.email && <p style={styles.error}>{errors.email}</p>}
                             </div>
                             <div className="book-order-input-box book-cus-inputset">
@@ -246,12 +288,12 @@ const CurrencyExchange = () => {
                                     />
                                 </div>
                                 <div className="mb-0">
-                                    <input type="text" id="Mobile" name="mobile" maxLength={10} minLength={10} placeholder="Mobile" value={currencyExchangeForm.mobile} onChange={handleChange} required />
+                                    <input type="text" id="Mobile" name="mobile" maxLength={10} minLength={10} placeholder="Mobile" value={currencyExchangeForm.mobile} onChange={handleChange} />
                                     {errors.mobile && <p style={styles.error}>{errors.mobile}</p>}
                                 </div>
                             </div>
                             <div className="book-order-input-box">
-                                <textarea name="address" id="Address" minLength={10} rows={3} maxLength={1000} placeholder="Address" value={currencyExchangeForm.address} onChange={handleChange} required></textarea>
+                                <textarea name="address" id="Address" minLength={10} rows={3} maxLength={1000} placeholder="Address" value={currencyExchangeForm.address} onChange={handleChange} ></textarea>
                             </div>
                         </div>
                         <div className="modal-footer">

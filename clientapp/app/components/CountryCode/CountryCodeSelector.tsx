@@ -11,6 +11,15 @@ interface CountryCodeSelectorProps {
 
 const CountryCodeSelector: React.FC<CountryCodeSelectorProps> = ({ countrySelectCallback }) => {
   const [selectedCountry, setSelectedCountry] = React.useState<CountryOption | null>({ value: '+91', label: 'India (+91)' });
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   const handleCountryChange = (selectedOption: CountryOption | null) => {
     setSelectedCountry(selectedOption);
