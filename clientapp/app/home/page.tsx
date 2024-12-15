@@ -1,14 +1,8 @@
-import { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from 'next'
 import BannerComponent from "../components/banner/BannerComponent";
 import BodyComponent from "../components/body/BodyComponent";
 import FooterComponent from "../components/footer/FooterComponent";
 import HeadersComponent from "../components/headers/HeadersComponent";
-
-export const metadata: Metadata = {
-    title: 'About 7Travel Money',
-    description: 'Currency exchange in Noida',
-    keywords: ['Best currency rate', 'Send Money Abroad', 'Buy dollars', 'Buy Euro']
-  };
 
 const home = () =>{
     return(
@@ -21,3 +15,20 @@ const home = () =>{
     )
 }
 export default home;
+interface PageParams {
+  // Add relevant param types
+}
+export async function generateMetadata({ params }: { params: PageParams }) {
+    return {
+        title: '7Travel Money ',
+        description: '7 travel money vision ans mission',
+        keywords: ['Best currency rate in Noida', 'Currency exchange in Delhi and NCR', 'Buy foreign Currency in Noida', 'Sell Foreign currency in Noida']
+      }
+  }
+// export const generateMetaData = () => {
+//     return {
+//       title: '7Travel Money ',
+//       description: '7 travel money vision ans mission',
+//       keywords: ['Best currency rate in Noida', 'Currency exchange in Delhi and NCR', 'Buy foreign Currency in Noida', 'Sell Foreign currency in Noida']
+//     }
+//   }
