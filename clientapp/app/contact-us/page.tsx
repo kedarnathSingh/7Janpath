@@ -1,10 +1,12 @@
 "use client";
+import React from "react";
 import { useState, useEffect, useCallback } from "react";
 import FooterComponent from "../components/footer/FooterComponent";
 import HeadersComponent from "../components/headers/HeadersComponent";
 import Recaptcha from 'react-google-recaptcha';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./contact.scss";
+import Metadata from './metadata';
 
 const ContactUs = () => {
   const [isCaptchaVerified, setIsCaptchaVerified] = useState<string | null>();
@@ -20,6 +22,8 @@ const ContactUs = () => {
   const styles = {
     error: { color: 'red', paddingTop: '5px'}
   }
+
+  
 
   const handleEnquirySubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -128,6 +132,7 @@ const ContactUs = () => {
 
   return (
     <div>
+      <Metadata seoTitle='7 travel money Contact Us' seoDescription="'Us Dollar enquiry', 'Australian dollar enquiry', 'Singapore currency enquiry', 'Canadian dollar enquiry', 'Euro enquiry', 'British pound enquiry', 'Swiss franc enquiry', 'Japanese yen enquiry', 'Chinese yuan enquiry', 'Hong Kong dollar enquiry', 'South African rand enquiry'" />
       <HeadersComponent />
       <div className="contact-us">
         <div className="header">
@@ -188,3 +193,11 @@ const ContactUs = () => {
   )
 }
 export default ContactUs;
+
+// export async function generateMetadata({ params }: { params: PageParams }) {
+//   return {
+//       title: '7 travel money Contact Us ',
+//       description: '7 travel money enquiry',
+//       keywords: [, 'New Zealand dollar enquiry', 'Swedish krona enquiry', 'Norwegian krone enquiry', 'Danish krone enquiry', 'Polish zloty enquiry', 'Turkish lira enquiry', 'Russian ruble enquiry', 'South Korean won enquiry', 'Mexican peso enquiry', 'Brazilian real enquiry', 'Indian rupee enquiry', 'South African rand enquiry', 'New Zealand dollar enquiry', 'Swedish krona enquiry', 'Norwegian krone enquiry', 'Danish krone enquiry', 'Polish zloty enquiry', 'Turkish lira enquiry', 'Russian ruble enquiry', 'South Korean won enquiry', 'Mexican peso enquiry', 'Brazilian real enquiry', 'Indian rupee enquiry']
+//     }
+// }
