@@ -1,5 +1,6 @@
 import next from "next";
 import CurrencyExchange from "../currencyExchange";
+import Currencylist from "../body/currency-list";
 
 const BannerComponent = () => {
     return(
@@ -77,6 +78,9 @@ const BannerComponent = () => {
             </button>
           </div>
          <CurrencyExchange />
+         <div className="custom-container">
+					<Currencylist></Currencylist>
+				</div>
     </div>
 
 <div className="top-banner-card-main">

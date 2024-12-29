@@ -23,12 +23,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  // background: linear-gradient(
+  //     to bottom,
+  //     transparent,
+  //     rgb(var(--background-end-rgb))
+  //   )
+  //   rgb(var(--background-start-rgb));
 }
 
 body{
@@ -171,7 +171,10 @@ body{
 	width: 90%;
 }
 .w-95{
-	width: 95%;
+	width: 95% !important;
+}
+.w-100{
+	width: 100% !important;
 }
 .h-100{
 	min-height: 100px;
@@ -297,8 +300,9 @@ body{
 }
 
 .custom-container{
-	width: 94%;
+	width: 96%;
 	margin: 0px auto;
+	overflow-x: hidden;
 }
 /*================ top navigation start here =========================*/
 
@@ -645,7 +649,7 @@ body{
 	margin: 0px;
 	padding: 0px;
 	position: relative;
-	margin-top: -170px;
+	margin-top: 30px;
 }
 
 .top-banner-card{
@@ -674,23 +678,47 @@ body{
 	color: #000;
 }
 .custom-table-set{
-	border: 1px #dcdcdc solid;
+	// border: 1px #dcdcdc solid;
 	padding: 0px 0px;
 	margin: 0px 0px;
 }
 .custom-table-set tr th{
 	background: #000;
-	padding: 25px 20px;
-	font-size: 16px;
+	padding: 12px 20px;
+	font-size: 1em;
 	font-weight: 500;
 	color: #fff;
+	&:first-child{
+		border-radius: 10px 0px 0px 0px;
+	}
+	&:last-child{
+		border-radius: 0px 10px 0px 0px;
+	}
 }
 .custom-table-set tr td{
-	padding: 15px 20px;
-	font-size: 14px;
+	padding: 0;
+	font-size: 1rem;
 	font-weight: 400;
 	color: #2C3134;
+	border-left: 1px #dcdcdc solid;
 }
+.custom-table-set tr td:last-child{
+	padding: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	color: #2C3134;
+	border-right: 1px #dcdcdc solid;
+}
+// .custom-table-set tr:last-of-type{
+// 	td{
+// 		& :first-child{
+// 			border-radius: 0px 0px 0px 10px;
+// 		}
+// 		& :last-child{
+// 		border-radius: 0px 0px 10px 0px;
+// 		}
+// 	}
+// }
 .top-banner-sec-main{
 	background: url("../public/images/banner-bg.png")no-repeat;
 	width: 100%;
@@ -833,6 +861,12 @@ body{
 	background: #fff;
 	padding: 25px;
 	margin: 0px 0px;
+	.book-order-tab-heading{
+		font-size: 100%;
+		font-weight: 600;
+		color: #055173;
+		margin: 0px 0px 20px 0px;
+	}
 }
 .book-btn-set{
 	background: #407BFF;
@@ -871,14 +905,16 @@ body{
 	margin: 0px 0px 20px 0px;
 	padding: 0px 0px;
 }
-.book-order-input-box p select, .book-order-input-box input , .book-order-input-box select{
-	border: 1px #D9D9D9 solid;
-	min-height: 51px;
-	margin: 0px 0px;
-	padding: 0px 20px;
-	font-size: 15px;
-	font-weight: 400;
-	width: 100%;
+.book-order-input-box{
+	input, select, textarea {
+		border: 1px #D9D9D9 solid;
+		min-height: 51px;
+		margin: 0px 0px;
+		padding: 0px 20px;
+		font-size: 15px;
+		font-weight: 400;
+		width: 100%;
+	}
 }
 .book-order-input-box label{
 	font-size: 15px;
@@ -979,9 +1015,9 @@ body{
 
 @media screen and (max-width: 768px) {
 
-  .collapse {
-    visibility: collapse;
-  }
+  // .collapse {
+  //   visibility: collapse;
+  // }
   .top-contect-sec{
     display: none;
   }
@@ -996,7 +1032,7 @@ body{
   }
   .book-order-search-box{
       right: 0px;
-      top: 14%;
+      top: 9%;
       z-index: 99;
       padding: 15px;
       margin: 10px;
@@ -1032,3 +1068,26 @@ body{
 	color: #fff;
 	text-decoration: none;
   }
+.under-maintenance {
+	width: auto;
+	max-height: 300px;
+	display: block;
+	margin: 0 auto;
+	position: relative;
+}
+.header-custom-main{
+background-color: #f1f1f1;
+}
+.small{
+	color: #0067DB;
+	font-size: 0.75rem !important;
+}
+.td-list-header, .td-list-item{
+	border-bottom: #ccc solid 1px;
+	padding: 0.6rem 0.75rem;
+}
+.book-order-modal{
+	&.show .modal-dialog{
+		transform: translate(0px, -11%) !important;
+	}
+}
