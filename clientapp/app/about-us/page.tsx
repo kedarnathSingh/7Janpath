@@ -1,4 +1,5 @@
 
+
 import type { Metadata, ResolvingMetadata } from 'next'
 import FooterComponent from "../components/footer/FooterComponent";
 import HeadersComponent from "../components/headers/HeadersComponent";
@@ -10,14 +11,6 @@ interface PageParams {
 }
 
 const aboutUs = () => {
-  //   const [data, setPageData] = useState([]);
-  //   useEffect(() => {
-  //     fetch(`${process.env.basePath}/settings/about_us`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setPageData(data)
-  //     })
-  // }, []);
 
   return (
     <div>
@@ -30,6 +23,7 @@ const aboutUs = () => {
     </div>
   )
 };
+
 export default aboutUs;
 
 export async function generateMetadata({ params }: { params: PageParams }) {
@@ -39,3 +33,4 @@ export async function generateMetadata({ params }: { params: PageParams }) {
       keywords: ['Best currency rate in Noida', 'Currency exchange in Delhi and NCR', 'Buy foreign Currency in Noida', 'Sell Foreign currency in Noida']
     }
 }
+
