@@ -1,0 +1,53 @@
+// Define your primary color
+$primary-color: #007bff;  // You can replace this with your desired color
+
+// Then use it
+.top-banner-sec-main {
+  .component-container {
+    margin-bottom: 20px;
+  }
+
+  .button-group {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 340px;
+
+    button {
+      padding: 10px 30px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+      
+      &.btn-primary {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: white;
+      }
+
+      &.btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: white;
+        margin-right: 100px;
+      }
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+        border-color: darken($primary-color, 10%);
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+      }
+    }
+  }
+
+  // Ensure the buttons only appear after the CurrencyExchange is shown
+  .button-group {
+    display: block;
+  }
+}
