@@ -602,7 +602,7 @@ const CurrencyExchange = () => {
       body: JSON.stringify({
         name: currencyExchangeForm.name,
         email: currencyExchangeForm.email,
-        mobile: selectedCountryCode + Number(currencyExchangeForm.mobile),
+        mobile: Number(currencyExchangeForm.mobile),
         address: currencyExchangeForm.address,
         city: cityName?.name,
         currency_you_have: currencyExchangeForm.userCurrency,
@@ -714,7 +714,7 @@ const CurrencyExchange = () => {
     <>
       <div className="book-order-search-box">
         <div className="book-order-tab-box">
-          <button className="book-order-tab-heading">Buy Forex Currency</button>
+          <button className="book-order-tab-heading">Sell Forex Currency</button>
           <form method="post" onSubmit={handlecurrencyExchnagePopup}>
             <p className="book-order-input-box">
               <select
