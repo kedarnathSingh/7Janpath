@@ -277,6 +277,7 @@ const CurrencyExchange = () => {
       {/* <div className="book-order-search-box">
         <div className="book-order-tab-box"> */}
           {/* <button className="book-order-tab-heading">Buy Forex Currency</button> */}
+          <button className="book-order-tab-heading">Buy Forex Currency</button>
           <form method="post" onSubmit={handlecurrencyExchnagePopup}>
             <p className="book-order-input-box">
               <select

@@ -16,7 +16,7 @@ const ButtonParent = () => {
         <div className="book-order-tab-box">
           {/* Button Controls */}
           <div className="component-container">
-          <div className="button-group p-2 m-2 d-flex justify-content-end">
+          <div className="button-group d-flex justify-content-end">
             <button
               onClick={handleBuyClick}
               className={`btn ${
