@@ -33,7 +33,7 @@ const MathCaptcha: React.FC<MathCaptchaProps> = ({ onCaptchaVerified }) => {
     }
   };
 
-  // Regenerate captcha on mount
+  // Regenerate captcha 
   useEffect(() => {
     generateCaptcha();
   }, []);

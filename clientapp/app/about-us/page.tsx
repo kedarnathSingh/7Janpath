@@ -21,9 +21,6 @@ const aboutUs = () => {
   return (
     <div>
       <HeadersComponent />
-      <div >
-        <img className="under-maintenance" src="images/backAboutUs.jpg" alt="under-maintenence" />
-      </div>
       <AboutUsContent />
       <FooterComponent />
     </div>

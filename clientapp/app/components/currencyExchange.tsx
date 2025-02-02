@@ -3,6 +3,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import CountryCodeSelector from "./CountryCode/CountryCodeSelector";
 import { useNavigate } from "react-router-dom";
 import MathCaptcha from "./MathCaptcha";
+import { ToastContainer, toast } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
 
 const CurrencyExchange = () => {
   const [citiesData, setCitiesData] = useState([]);
@@ -22,7 +24,6 @@ const CurrencyExchange = () => {
     total_amount?: number;
   }>({});
 
-
   const [isCaptchaValid, setIsCaptchaValid] = useState<boolean>(false);
 
   const [currencyExchangeForm, setCurrencyExchangeForm] = useState({
@@ -41,7 +42,6 @@ const CurrencyExchange = () => {
   const styles = {
     error: { color: "red", paddingTop: "5px" },
   };
-
 
   useEffect(() => {
     fetch(`${process.env.basePath}/cities`)
@@ -124,11 +124,11 @@ const CurrencyExchange = () => {
     event.preventDefault();
 
     if (!isCaptchaValid) {
-        alert("Please solve the captcha correctly.");
-        return;
-      }
-      const isFormValid = validateForm(); 
-    validateForm();
+      toast.error("Please solve the captcha correctly."); // Replace alert with toast
+      return;
+    }
+
+    const isFormValid = validateForm();
     if (!isFormValid) {
       return;
     }
@@ -139,15 +139,12 @@ const CurrencyExchange = () => {
     const currentYouWant: any = currencyWantData.find(
       (currency: any) => currency.id == currencyExchangeForm.requiredCurrency
     );
-    const mobileNumber = parseInt(
-      `${currencyExchangeForm.mobile}`,
-      10
-    );
+    const mobileNumber = parseInt(`${currencyExchangeForm.mobile}`, 10);
     if (isNaN(mobileNumber)) {
-      alert("Invalid mobile number");
+      toast.error("Invalid mobile number"); // Replace alert with toast
       return;
     }
-    console.log("API URL:", `${process.env.basePath}/enquiry`);
+
     fetch(`${process.env.basePath}/enquiry`, {
       method: "POST",
       headers: {
@@ -155,33 +152,26 @@ const CurrencyExchange = () => {
       },
       body: JSON.stringify({
         name: currencyExchangeForm.name,
-    email: currencyExchangeForm.email,
-    mobile: mobileNumber,
-    address: currencyExchangeForm.address,
-    city: cityName?.name || "Unknown City",
-    currency_you_have: currencyExchangeForm.userCurrency,
-    currency_you_want: currentYouWant?.name || "Unknown Currency",
-    currency_type: currencyExchangeForm.currencyNotes,
-    forex_amount: Number(currencyExchangeForm.userAmount) || 0,
-    total_amount: Number(currencyExchangeForm.vendorAmount) || 0,
-    forex_rate: Number(selectedCurrency?.buy_rate) || 0,
-    inr_amount: Number(currencyExchangeForm.vendorAmount) || 0,
-    service_charge: Number(orderSummary.service_charge || 0),
-    gst: Number(orderSummary.gst || 0),
-    request_type: "Buy",
-    status: 1,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+        email: currencyExchangeForm.email,
+        mobile: mobileNumber,
+        address: currencyExchangeForm.address,
+        city: cityName?.name || "Unknown City",
+        currency_you_have: currencyExchangeForm.userCurrency,
+        currency_you_want: currentYouWant?.name || "Unknown Currency",
+        currency_type: currencyExchangeForm.currencyNotes,
+        forex_amount: Number(currencyExchangeForm.userAmount) || 0,
+        total_amount: Number(currencyExchangeForm.vendorAmount) || 0,
+        forex_rate: Number(selectedCurrency?.buy_rate) || 0,
+        inr_amount: Number(currencyExchangeForm.vendorAmount) || 0,
+        service_charge: Number(orderSummary.service_charge || 0),
+        gst: Number(orderSummary.gst || 0),
+        request_type: "Buy",
+        status: 1,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
       }),
     })
-        
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setIsCustomModalOpen(false);
-    //     resetStates();
-    //     alert("Order placed successfully");
-    //   });
-    .then(async (res) => {
+      .then(async (res) => {
         const responseData = await res.json();
         if (!res.ok) {
           throw new Error(`API Error (${res.status}): ${responseData.message}`);
@@ -191,10 +181,10 @@ const CurrencyExchange = () => {
       .then((data) => {
         setIsCustomModalOpen(false);
         resetStates();
-        alert("Order placed successfully!");
+        toast.success("Order placed successfully!"); // Replace alert with toast
       })
       .catch((error) => {
-        alert(`Failed to place order: ${error.message}`);
+        toast.error(`Failed to place order: ${error.message}`); // Replace alert with toast
       });
   };
 
@@ -378,6 +368,7 @@ const CurrencyExchange = () => {
           </form>
         </div>
       </div>
+
       {/* Modal using bootstrap */}
       <div
         className={`modal fade bd-example-modal-xl ${
@@ -440,7 +431,7 @@ const CurrencyExchange = () => {
                     <td>{orderSummary.gst}</td>
                     <td>
                       {new Intl.NumberFormat("en-IN").format(
-                        Math.round(orderSummary.total_amount)
+                        Math.round(orderSummary.total_amount || 0)
                       )}
                     </td>
                   </tr>
@@ -515,7 +506,7 @@ const CurrencyExchange = () => {
                   />
                 </div>
                 <div className="book-order-input-box">
-                <MathCaptcha  onCaptchaVerified={setIsCaptchaValid} />
+                  <MathCaptcha onCaptchaVerified={setIsCaptchaValid} />
                 </div>
               </div>
               <div className="modal-footer">
@@ -529,6 +520,7 @@ const CurrencyExchange = () => {
       </div>
 
       {isCustomModalOpen && <div className="modal-backdrop fade show"></div>}
+      <ToastContainer />
     </>
   );
 };

@@ -1,53 +1,126 @@
-// Define your primary color
-$primary-color: #007bff;  // You can replace this with your desired color
+// // Define your primary color
+// $primary-color: #007bff;  // You can replace this with your desired color
 
-// Then use it
+// // Then use it
+// .top-banner-sec-main {
+//   .component-container {
+//     margin-bottom: 20px;
+//   }
+
+//   .button-group {
+//     margin-top: 20px;
+//     text-align: center;
+//     display: flex;
+//     justify-content: center;
+//     gap: 340px;
+
+//     button {
+//       padding: 10px 30px;
+//       font-size: 16px;
+//       border-radius: 5px;
+//       cursor: pointer;
+//       transition: background-color 0.3s, border-color 0.3s;
+      
+//       &.btn-primary {
+//         background-color: $primary-color;
+//         border-color: $primary-color;
+//         color: white;
+//       }
+
+//       &.btn-secondary {
+//         background-color: #6c757d;
+//         border-color: #6c757d;
+//         color: white;
+//         margin-right: 100px;
+//       }
+
+//       &:hover {
+//         background-color: darken($primary-color, 10%);
+//         border-color: darken($primary-color, 10%);
+//       }
+
+//       &:focus {
+//         outline: none;
+//         box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+//       }
+//     }
+//   }
+
+//   // Ensure the buttons only appear after the CurrencyExchange is shown
+//   .button-group {
+//     display: block; 
+//   }
+// }
+
+
+// Define colors
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$hover-primary: #0056b3;
+$hover-secondary: #545b62;
+
 .top-banner-sec-main {
   .component-container {
     margin-bottom: 20px;
   }
 
+  // Button group container
   .button-group {
     margin-top: 20px;
-    text-align: center;
     display: flex;
     justify-content: center;
-    gap: 340px;
+    gap: 20px; // Better spacing
+    flex-wrap: wrap; // Ensures proper wrapping on small screens
 
     button {
-      padding: 10px 30px;
+      padding: 12px 25px;
       font-size: 16px;
-      border-radius: 5px;
+      font-weight: 600;
+      border-radius: 25px; // Smooth rounded corners
       cursor: pointer;
-      transition: background-color 0.3s, border-color 0.3s;
+      transition: all 0.3s ease-in-out;
+      text-align: center;
+      border: none;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); // Soft shadow
+      position: relative;
+      overflow: hidden;
       
       &.btn-primary {
-        background-color: $primary-color;
-        border-color: $primary-color;
+        background: linear-gradient(135deg, $primary-color, #0056b3); 
         color: white;
       }
 
       &.btn-secondary {
-        background-color: #6c757d;
-        border-color: #6c757d;
+        background: linear-gradient(135deg, $secondary-color, #3a4045);
         color: white;
-        margin-right: 100px;
       }
 
       &:hover {
-        background-color: darken($primary-color, 10%);
-        border-color: darken($primary-color, 10%);
+        transform: translateY(-2px); // Subtle lift effect
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
       }
 
       &:focus {
         outline: none;
-        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+        box-shadow: 0px 0px 8px rgba(38, 143, 255, 0.5);
       }
     }
   }
 
-  // Ensure the buttons only appear after the CurrencyExchange is shown
-  .button-group {
-    display: block;
+  // Responsive fixes for mobile
+  @media (max-width: 768px) {
+    .button-group {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+    }
+
+    button {
+      width: 130px;
+      font-size: 14px;
+      padding: 10px 20px;
+    }
   }
 }

@@ -1,5 +1,6 @@
 import next from "next";
 import Link from "next/link";
+import './headers.scss';
 
 const HeadersComponent = () => {
     return(
@@ -24,7 +25,7 @@ const HeadersComponent = () => {
 			<nav className="navbar navbar-expand-lg custom-nav ">
 				<div className="container-fluid">
 				  <Link className="navbar-brand" href={'/home'}>
-					<img className="pt-2" src="images/logo.svg"/>
+					<img className="pt-0" src="images/logo.svg"/>
 				  </Link>
 				  <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>

@@ -1,7 +1,11 @@
+"use client";
 import next from "next";
 import './FooterComponent.scss';
+import { useState } from "react";
+import PopupModal from "../PopupModal";
 
 const FooterComponent = () => {
+	const [isModalOpen, setIsModalOpen]=useState(false);
     return(
         
             <footer className="footer-home-main">
@@ -18,7 +22,7 @@ const FooterComponent = () => {
 									<li><a className="dropdown-item" href="#">Currencies</a></li>
 									<li><a className="dropdown-item" href="#">Currency Converter</a></li>
 									<li><a className="dropdown-item" href="#">Careers</a></li>
-									<li><a className="dropdown-item" href="#">faqs</a></li>
+									<li><a className="dropdown-item" href="#" onClick={() => setIsModalOpen(true)}>Term and Conditions</a></li>
 									<li><a className="dropdown-item" href="#">our Policies</a></li>
 									<li><a className="dropdown-item" href="#">Press release</a></li>
 									<li><a className="dropdown-item" href="#">Sitemap</a></li>	
@@ -65,6 +69,11 @@ const FooterComponent = () => {
 								<a href=""><i className="fab fa-twitter-square"></i></a>
 								<a href="">	<i className="fab fa-google-plus-square"></i></a>
 					</div> */}
+					    <PopupModal
+         isOpen={isModalOpen}
+         title="Terms and Conditions"
+         onClose={() => setIsModalOpen(false)}
+   />
 		</div>
 	</footer>
         
@@ -72,3 +81,50 @@ const FooterComponent = () => {
 }
 
 export default FooterComponent;
+
+
+// "use client";
+// import { useState } from "react";
+// import PopupModal from "../PopupModal";
+// import "./FooterComponent.scss";
+
+// const FooterComponent = () => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+
+//   return (
+//     <>
+//       <footer className="footer-home-main">
+//         <div className="row">
+//           <div className="col-md-5 footer-home-menu">
+//             <div className="col-md-3 footer-home-menu pt-4">
+//               <h3>Quick Links</h3>
+//               <ul>
+//                 <li><a className="dropdown-item" href="#">Special Offers</a></li>
+//                 <li><a className="dropdown-item" href="#">Currencies</a></li>
+//                 <li><a className="dropdown-item" href="#">Currency Converter</a></li>
+//                 <li><a className="dropdown-item" href="#">Careers</a></li>
+//                 <li>
+//                   <a className="dropdown-item" href="#" onClick={() => setIsModalOpen(true)}>
+//                     Terms and Conditions
+//                   </a>
+//                 </li>
+//                 <li><a className="dropdown-item" href="#">Our Policies</a></li>
+//                 <li><a className="dropdown-item" href="#">Press Release</a></li>
+//                 <li><a className="dropdown-item" href="#">Sitemap</a></li>
+//               </ul>
+//             </div>
+//           </div>
+//         </div>
+//       </footer>
+
+//       {/* Reusable Popup Modal */}
+//       <PopupModal
+//         isOpen={isModalOpen}
+//         title="Terms and Conditions"
+//         onClose={() => setIsModalOpen(false)}
+//       />
+//     </>
+//   );
+// };
+
+// export default FooterComponent;
