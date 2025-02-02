@@ -274,9 +274,9 @@ const CurrencyExchange = () => {
 
   return (
     <>
-      <div className="book-order-search-box">
-        <div className="book-order-tab-box">
-          <button className="book-order-tab-heading">Buy Forex Currency</button>
+      {/* <div className="book-order-search-box">
+        <div className="book-order-tab-box"> */}
+          {/* <button className="book-order-tab-heading">Buy Forex Currency</button> */}
           <form method="post" onSubmit={handlecurrencyExchnagePopup}>
             <p className="book-order-input-box">
               <select
@@ -366,8 +366,8 @@ const CurrencyExchange = () => {
               Book This Order
             </button>
           </form>
-        </div>
-      </div>
+        {/* </div>
+      </div> */}
 
       {/* Modal using bootstrap */}
       <div

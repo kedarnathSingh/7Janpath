@@ -12,8 +12,8 @@ const ButtonParent = () => {
         setActiveComponent("sell");
       };
   return (
-    <div>
-        <div>
+    <div className="book-order-search-box">
+        <div className="book-order-tab-box">
           {/* Button Controls */}
           <div className="component-container">
           <div className="button-group p-2 m-2 d-flex justify-content-end">

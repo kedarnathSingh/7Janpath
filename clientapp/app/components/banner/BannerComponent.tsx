@@ -13,14 +13,14 @@ import ButtonParent from "../ButtonParent";
 // import { Routes, Route } from 'react-router-dom';
 
 const BannerComponent = () => {
-  const [activeComponent, setActiveComponent] = useState<"buy" | "sell">("buy");
-  const handleBuyClick = () => {
-    setActiveComponent("buy");
-  };
+  // const [activeComponent, setActiveComponent] = useState<"buy" | "sell">("buy");
+  // const handleBuyClick = () => {
+  //   setActiveComponent("buy");
+  // };
 
-  const handleSellClick = () => {
-    setActiveComponent("sell");
-  };
+  // const handleSellClick = () => {
+  //   setActiveComponent("sell");
+  // };
 
   return (
     <div>
@@ -53,7 +53,7 @@ const BannerComponent = () => {
         </div>
         <div>
           {/* Button Controls */}
-          <div className="component-container">
+          {/* <div className="component-container">
           <div className="button-group p-2 m-2 d-flex justify-content-end">
             <button
               onClick={handleBuyClick}
@@ -77,7 +77,7 @@ const BannerComponent = () => {
             ) : (
               <CurrencyExchange1 />
             )}
-          </div>
+          </div> */}
           <ButtonParent/>
         </div>
 
