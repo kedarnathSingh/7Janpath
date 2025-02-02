@@ -2,10 +2,12 @@
 import { useState } from "react";
 import next from "next";
 import CurrencyExchange from "../currencyExchange";
-import Currencylist from "../body/currency-list";
 import CurrencyExchange1 from "../currencyExchange1";
+import Currencylist from "../body/currency-list";
 import React from "react";
 import './BannerComponent.scss';
+import ButtonParent from "../ButtonParent";
+
 
 
 // import { Routes, Route } from 'react-router-dom';
@@ -51,6 +53,7 @@ const BannerComponent = () => {
         </div>
         <div>
           {/* Button Controls */}
+          <div className="component-container">
           <div className="button-group p-2 m-2 d-flex justify-content-end">
             <button
               onClick={handleBuyClick}
@@ -69,14 +72,15 @@ const BannerComponent = () => {
               Sell Forex
             </button>
           </div>
-          <div className="component-container">
             {activeComponent === "buy" ? (
               <CurrencyExchange />
             ) : (
               <CurrencyExchange1 />
             )}
           </div>
+          <ButtonParent/>
         </div>
+
         <div
           id="carouselExampleCaptions"
           className="carousel custom-carusel slide"
