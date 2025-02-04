@@ -39,18 +39,29 @@ const MathCaptcha: React.FC<MathCaptchaProps> = ({ onCaptchaVerified }) => {
   }, []);
 
   return (
-    <div className="captcha-container">
+    <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
       <label>
         What is {num1} + {num2} ?
-        <input
-          type="number"
-          value={userInput}
-          onChange={handleChange}
-          placeholder="Enter the sum"
-        />
       </label>
+      <input
+        type="number"
+        value={userInput}
+        onChange={handleChange}
+        placeholder="Enter the sum"
+        style={{
+          width: "350px",
+          padding: "1px",
+          fontSize: "1rem",
+          borderRadius: "6px",
+          background: "#f9f9f9",
+          transition: "all 0.3s ease-in-out",
+          textAlign: "center",
+        }}
+      />
       {userInput && isNaN(Number(userInput)) && (
-        <p style={{ color: "red" }}>Please enter a valid number.</p>
+        <p style={{ color: "red", marginLeft: "10px" }}>
+          Please enter a valid number.
+        </p>
       )}
     </div>
   );

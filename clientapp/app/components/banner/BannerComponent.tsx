@@ -8,20 +8,7 @@ import React from "react";
 import './BannerComponent.scss';
 import ButtonParent from "../ButtonParent";
 
-
-
-// import { Routes, Route } from 'react-router-dom';
-
 const BannerComponent = () => {
-  // const [activeComponent, setActiveComponent] = useState<"buy" | "sell">("buy");
-  // const handleBuyClick = () => {
-  //   setActiveComponent("buy");
-  // };
-
-  // const handleSellClick = () => {
-  //   setActiveComponent("sell");
-  // };
-
   return (
     <div>
       <div className="top-banner-sec-main">
@@ -52,33 +39,7 @@ const BannerComponent = () => {
           </ul>
         </div>
         <div>
-          {/* Button Controls */}
-          {/* <div className="component-container">
-          <div className="button-group p-2 m-2 d-flex justify-content-end">
-            <button
-              onClick={handleBuyClick}
-              className={`btn ${
-                activeComponent === "buy" ? "btn-primary" : "btn-secondary"
-              }`}
-            >
-              Buy Forex
-            </button>
-            <button
-              onClick={handleSellClick}
-              className={`btn ${
-                activeComponent === "sell" ? "btn-primary" : "btn-secondary"
-              }`}
-            >
-              Sell Forex
-            </button>
-          </div>
-            {activeComponent === "buy" ? (
-              <CurrencyExchange />
-            ) : (
-              <CurrencyExchange1 />
-            )}
-          </div> */}
-          <ButtonParent/>
+          <ButtonParent />
         </div>
 
         <div
@@ -123,7 +84,7 @@ const BannerComponent = () => {
                   <li>Live Exchange Rate | Lowest Rates Guaranteed</li>
                   <li>Funds received abroad within 12 - 48 hours</li>
                 </ul>
-                <button className="transfer-btn-top">Transfer Money Now</button>
+                <button className="book-btn-set">Transfer Money Now</button>
               </div>
             </div>
             <div className="carousel-item">
@@ -184,14 +145,6 @@ const BannerComponent = () => {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-        {/* <div>
-          <CurrencyExchange />
-          </div> */}
-        {/* <CurrencyExchange1/> */}
-        {/* <Routes>
-      <Route path="/currencyExchange" element={<CurrencyExchange />} />
-      <Route path="/currencyExchange1" element={<CurrencyExchange1 />} />
-    </Routes> */}
         <div className="custom-container">
           <Currencylist></Currencylist>
         </div>

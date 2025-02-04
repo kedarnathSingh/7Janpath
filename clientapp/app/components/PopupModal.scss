@@ -1,83 +1,99 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background: #fff;
+  width: 50%;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-header {
+  // background: ;
+  color: black;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #ffcc00;
+}
+
+.modal-body {
+  padding: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+// Accordion Styling
+.accordion-section {
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-header {
+  background: #f8f9fa;
+  padding: 12px 20px;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.accordion-header:hover {
+  background: #e2e6ea;
+}
+
+.accordion-content {
+  padding: 15px 20px;
+  background: #ffffff;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}
+
+@media (max-width: 768px) {
   .modal-container {
-    background: white;
-    padding: 20px;
     width: 90%;
-    max-width: 700px;
-    max-height: 80vh;
-    overflow-y: auto;
-    border-radius: 10px;
-    text-align: left;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.3s ease-in-out;
   }
-  
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
-  }
-  
-  .modal-header h2 {
-    font-size: 20px;
-    color: #333;
-  }
-  
-  .close-btn {
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #666;
-  }
-  
-  .close-btn:hover {
-    color: red;
-  }
-  
-  .modal-body {
-    padding-top: 10px;
-    line-height: 1.6;
-    font-size: 14px;
-    max-height: 60vh;
-    overflow-y: auto;
-  }
-  
-  .modal-body h3, .modal-body h4 {
-    color: #007bff;
-    margin-top: 10px;
-  }
-  
-  .modal-body ul {
-    padding-left: 20px;
-  }
-  
-  .modal-body li {
-    margin-bottom: 5px;
-  }
-  
-  .modal-body p {
-    font-size: 14px;
-    color: #444;
-    margin-bottom: 8px;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
+}
