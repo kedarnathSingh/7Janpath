@@ -7,13 +7,13 @@ const BodyComponent = () => {
         <main className="main-middle-content-section pt-5 pb-5">
 
     <div className="container-fluid pb-5">	
-				{/* <div className="custom-container">
+				{/* <div className="container-fluid">
 					<Currencylist></Currencylist>
 				</div> */}
 			</div>
 
       <div className="container-fluid pt-5 pb-5">	
-				<div className="custom-container">
+				<div className="container-fluid">
 					<div className="head-container-sec mb-5">
 						<h5>Empowering Your financial Transactions</h5>
 						<h2>Expert Currency Exchange</h2>
@@ -74,7 +74,7 @@ const BodyComponent = () => {
 			</div>
 
       <div className="container-fluid pt-5 pb-5 bg-grey">	
-				<div className="custom-container">		
+				<div className="container-fluid">		
 					<div className="row pt-3 pb-3">
 						<div className="col-lg-6">
 							<figure>
@@ -138,7 +138,7 @@ const BodyComponent = () => {
 
 
 			<div className="container-fluid pt-5 pb-5">	
-				<div className="custom-container">
+				<div className="container-fluid">
 					<div className="head-container-sec mt-5 mb-5 pb-2">
 						<h5>Effortless Currency Exchange</h5>
 						<h2>Reliable Service, Competitive Rates</h2>
@@ -188,14 +188,14 @@ const BodyComponent = () => {
 			</div>
 
       <div className="container-fluid pt-5 pb-5 why-choose-bg">	
-				<div className="custom-container">
+				<div className="container-fluid">
 					<div className="head-container-sec mb-5 pb-1">
 						<h5>Why Choose Us?</h5>
 						<h2 className="text-white">We Always Try To Understand Customer’s Expectation</h2>
 					</div>
 
 						
-					<div className="row">
+					<div className="row mx-4">
 						<div className="col-lg-4">
 							<div className="why-choose-card-main">
 									<figure>
@@ -236,7 +236,7 @@ const BodyComponent = () => {
 				</div>
 
         <div className="container-fluid pt-5 pb-5">	
-				<div className="custom-container">
+				<div className="container-fluid">
 					<div className="head-container-sec mt-5 mb-5 pb-1">
 						<h5>Discover What Our Clients Say</h5>
 						<h2>Testimonials That Inspire</h2>

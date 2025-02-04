@@ -151,7 +151,7 @@ const BannerComponent = () => {
       </div>
 
       <div className="top-banner-card-main">
-        <div className="custom-container">
+        <div className="container-fluid">
           <div className="row">
             <div className="col-lg-4">
               <div className="top-banner-card">

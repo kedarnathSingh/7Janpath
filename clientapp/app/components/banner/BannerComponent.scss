@@ -66,9 +66,9 @@ $hover-secondary: #545b62;
 
   // Button group container
   .button-group {
-    margin-top: 20px;
+    margin-top: -10;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px; // Better spacing
     flex-wrap: wrap; // Ensures proper wrapping on small screens
 
