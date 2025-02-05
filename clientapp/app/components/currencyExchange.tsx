@@ -18,6 +18,8 @@ const CurrencyExchange = () => {
     const [isFormValid, setIsFormValid] = useState(false);
     const [isFirstForm, setIsFirstForm] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [captchaKey, setCaptchaKey] = useState(0);
+
 
     const [orderSummary, setOrderSummary] = useState<{
         inr_amount?: number;
@@ -121,75 +123,6 @@ const CurrencyExchange = () => {
                 setIsCustomModalOpen(true);
             });
     };
-
-    // const handlecurrencyExchnageSubmit = (event: any) => {
-    //     event.preventDefault();
-    //     if (!isCaptchaValid) {
-    //         toast.error("Please solve the captcha correctly."); // Replace alert with toast
-    //         return;
-    //     }
-
-    //     const isFormValid = validateForm();
-    //     if (!isFormValid) {
-    //         return;
-    //     }
-    //     toast.info("Submitting your request...", { autoClose: 2700 });
-    //     const cityName: any = citiesData.find(
-    //         (city: any) => city.id == currencyExchangeForm.selectCity
-    //     );
-    //     const currentYouWant: any = currencyWantData.find(
-    //         (currency: any) => currency.id == currencyExchangeForm.requiredCurrency
-    //     );
-    //     const mobileNumber = parseInt(`${currencyExchangeForm.mobile}`, 10);
-    //     if (isNaN(mobileNumber)) {
-    //         toast.error("Invalid mobile number"); // Replace alert with toast
-    //         return;
-    //     }
-
-    //     fetch(`${process.env.basePath}/enquiry`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             name: currencyExchangeForm.name,
-    //             email: currencyExchangeForm.email,
-    //             mobile: mobileNumber,
-    //             address: currencyExchangeForm.address,
-    //             city: cityName?.name || "Unknown City",
-    //             currency_you_have: currencyExchangeForm.userCurrency,
-    //             currency_you_want: currentYouWant?.name || "Unknown Currency",
-    //             currency_type: currencyExchangeForm.currencyNotes,
-    //             forex_amount: Number(currencyExchangeForm.userAmount) || 0,
-    //             total_amount: Number(currencyExchangeForm.vendorAmount) || 0,
-    //             forex_rate: Number(selectedCurrency?.buy_rate) || 0,
-    //             inr_amount: Number(currencyExchangeForm.vendorAmount) || 0,
-    //             service_charge: Number(orderSummary.service_charge || 0),
-    //             gst: Number(orderSummary.gst || 0),
-    //             request_type: "Buy",
-    //             status: 1,
-    //             created_at: new Date().toISOString(),
-    //             updated_at: new Date().toISOString(),
-    //         }),
-    //     })
-    //         .then(async (res) => {
-    //             const responseData = await res.json();
-    //             if (!res.ok) {
-    //                 throw new Error(`API Error (${res.status}): ${responseData.message}`);
-    //             }
-    //             return responseData;
-    //         })
-    //         .then((data) => {
-    //             setIsCustomModalOpen(false);
-    //             resetStates();
-    //             toast.success("Order placed successfully!"); // Replace alert with toast
-    //         })
-    //         .catch((error) => {
-    //             toast.error(`Failed to place order: ${error.message}`); // Replace alert with toast
-    //         });
-    // };
-
-
     const handlecurrencyExchnageSubmit = (event: any) => {
         event.preventDefault();
         if (!isCaptchaValid) {
@@ -201,10 +134,7 @@ const CurrencyExchange = () => {
             return;
         }
 
-        setIsSubmitting(true); // Disable button
-
-        toast.info("Submitting your request...", { autoClose: 2700 });
-
+        setIsSubmitting(true); // Disable button on first click
         fetch(`${process.env.basePath}/enquiry`, {
             method: "POST",
             headers: {
@@ -215,9 +145,16 @@ const CurrencyExchange = () => {
                 email: currencyExchangeForm.email,
                 mobile: parseInt(currencyExchangeForm.mobile, 10),
                 address: currencyExchangeForm.address,
-                city: citiesData.find((city: any) => city.id == currencyExchangeForm.selectCity)?.name || "Unknown City",
+                city:
+                    citiesData.find(
+                        (city: any) => city.id == currencyExchangeForm.selectCity
+                    )?.name || "Unknown City",
                 currency_you_have: currencyExchangeForm.userCurrency,
-                currency_you_want: currencyWantData.find((currency: any) => currency.id == currencyExchangeForm.requiredCurrency)?.name || "Unknown Currency",
+                currency_you_want:
+                    currencyWantData.find(
+                        (currency: any) =>
+                            currency.id == currencyExchangeForm.requiredCurrency
+                    )?.name || "Unknown Currency",
                 currency_type: currencyExchangeForm.currencyNotes,
                 forex_amount: Number(currencyExchangeForm.userAmount) || 0,
                 total_amount: Number(currencyExchangeForm.vendorAmount) || 0,
@@ -241,11 +178,12 @@ const CurrencyExchange = () => {
             .then((data) => {
                 setIsCustomModalOpen(false);
                 resetStates();
+                setIsSubmitting(false); // ✅ Re-enable button for next order
                 toast.success("Order placed successfully!");
             })
             .catch((error) => {
                 toast.error(`Failed to place order: ${error.message}`);
-                setIsSubmitting(false); // Re-enable button on error
+                setIsSubmitting(false); // ✅ Re-enable button on error
             });
     };
     const validateForm = useCallback(
@@ -320,6 +258,8 @@ const CurrencyExchange = () => {
         setSelectedCurrency(null);
         setUserAmount("");
         setVendorAmount("");
+        setIsCaptchaValid(false); // ✅ Reset Captcha Validation
+        setCaptchaKey(prevKey => prevKey + 1); // ✅ Force re-render of MathCaptcha
     };
 
     const handleSelectCountryCode = (countryCode: string) => {
@@ -557,14 +497,15 @@ const CurrencyExchange = () => {
                                     />
                                 </div>
                                 <div className="book-order-input-box">
-                                    <MathCaptcha onCaptchaVerified={setIsCaptchaValid} />
+                                    <MathCaptcha key={captchaKey} onCaptchaVerified={setIsCaptchaValid} />
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                {/* <button className="book-btn-set" type="submit">
-                                    Place Your Order
-                                </button> */}
-                                <button className="book-btn-set" type="submit" disabled={isSubmitting}>
+                                <button
+                                    className="book-btn-set"
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                >
                                     {isSubmitting ? "Processing..." : "Place Your Order"}
                                 </button>
                             </div>
