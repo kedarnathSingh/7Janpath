@@ -15,10 +15,10 @@ const BannerComponent = () => {
         <div className="top-tab-nav-sec">
           <ul>
             <li className="active-tab">
-              <img src="images/tab-icon-1.svg" /> <span>Currency</span>
+              <img src="images/tab-icon-1.svg"  /> <span>Currency</span>
             </li>
             <li>
-              <img src="images/tab-icon-2.svg" />{" "}
+              <img src="images/tab-icon-2.svg" />{""}
               <span>Transfer Money Abroad</span>
             </li>
             <li>

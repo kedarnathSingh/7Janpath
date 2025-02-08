@@ -9,6 +9,8 @@ import "./contact.scss";
 
 const ContactUs = () => {
   const [isCaptchaValid, setIsCaptchaValid] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaKey, setCaptchaKey] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,11 +32,11 @@ const ContactUs = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Show an immediate toast when the submit button is clicked
-    toast.info("Submitting your request...", { autoClose: 2500 });
+    setIsSubmitting(true);
 
     if (!isCaptchaValid) {
       toast.error("Please solve the captcha correctly.");
+      setIsSubmitting(false);
       return;
     }
 
@@ -65,11 +67,16 @@ const ContactUs = () => {
           location: "Noida, UP",
           message: "",
         });
+        setIsSubmitting(false);
+        setIsCaptchaValid(false); 
+        setCaptchaKey(prevKey => prevKey + 1);
       } else {
         toast.error("Failed to submit the form. Please try again.");
+        setIsSubmitting(false);
       }
     } catch (error) {
       toast.error("An error occurred. Please try again later.");
+      setIsSubmitting(false);
     }
   };
 
@@ -151,12 +158,16 @@ const ContactUs = () => {
                   <div className="col-sm-12">
                     <label>Captcha Verification</label>
                     <div className="captcha-box">
-                      <MathCaptcha onCaptchaVerified={setIsCaptchaValid} />
+                    <MathCaptcha key={captchaKey} onCaptchaVerified={setIsCaptchaValid} />
                     </div>
                   </div>
                 </div>
-                <button className="book-btn-set rounded mt-2" type="submit">
-                  Submit
+                <button
+                  className="book-btn-set"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Processing..." : "Place Your Order"}
                 </button>
               </div>
               <div className="col-sm-6">
