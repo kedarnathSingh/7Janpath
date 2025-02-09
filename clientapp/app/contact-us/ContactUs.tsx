@@ -84,7 +84,7 @@ const ContactUs = () => {
     <div>
       <HeadersComponent />
       <div className="contact-us">
-        <div className="header">
+        <div className="header text-center">
           <h2>Contact Us</h2>
         </div>
         <div className="contact-container">
@@ -145,39 +145,45 @@ const ContactUs = () => {
                 </div>
                 <div className="col-sm-6 contact-input-box">
                   <label>Message</label>
-                  <input
-                    type="text"
-                    name="message"
-                    placeholder="Enter your message"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
+                  <textarea class="contact-textarea"
+  name="message"
+  placeholder="Enter your message"
+  required
+  value={formData.message}
+  onChange={handleChange}
+/>
+
                 </div>
                 <div className="row mt-3">
-                  <div className="col-sm-12">
+                  <div className="col-sm-12 contact-input-box">
                     <label>Captcha Verification</label>
                     <div className="captcha-box">
                     <MathCaptcha key={captchaKey} onCaptchaVerified={setIsCaptchaValid} />
                     </div>
                   </div>
                 </div>
+                <br/>
+                <div class="text-center">
                 <button
                   className="book-btn-set"
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Processing..." : "Place Your Order"}
+                  {isSubmitting ? "Processing..." : "Submit"}
                 </button>
+                </div>
               </div>
               <div className="col-sm-6">
+              <div class="text-center">
                 <h4>Our Office</h4>
+                
                 <p>
-                  Address: MZ-007, Ansal Fortune Arcade, Sector-18, Noida,
-                  UP-201301
+                  <strong>Address:</strong> MZ-007, Ansal Fortune Arcade, <br/>
+                  Sector-18, Noida, UP-201301
                 </p>
-                <p>Email: Business@7travelmoney.com</p>
-                <p>Phone: +91 9810474842</p>
+                <p><strong>Email:</strong> business@7travelmoney.com</p>
+                <p><strong>Phone:</strong> +91 9810474842</p>
+                </div>
               </div>
             </div>
           </form>
