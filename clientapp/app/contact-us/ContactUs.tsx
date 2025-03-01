@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import FooterComponent from "../components/footer/FooterComponent";
-import HeadersComponent from "../components/headers/HeadersComponent";
+// import FooterComponent from "../components/footer/FooterComponent";
+// import HeadersComponent from "../components/headers/HeadersComponent";
 import MathCaptcha from "../components/MathCaptcha";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -82,7 +82,7 @@ const ContactUs = () => {
 
   return (
     <div>
-      <HeadersComponent />
+      {/* <HeadersComponent /> */}
       <div className="contact-us">
         <div className="header text-center">
           <h2>Contact Us</h2>
@@ -165,7 +165,7 @@ const ContactUs = () => {
                 <br/>
                 <div class="text-center">
                 <button
-                  className="book-btn-set"
+                  className="mt-3 book-btn-set"
                   type="submit"
                   disabled={isSubmitting}
                 >
@@ -189,7 +189,7 @@ const ContactUs = () => {
           </form>
         </div>
       </div>
-      <FooterComponent />
+      {/* <FooterComponent /> */}
       <ToastContainer />
     </div>
   );

@@ -6,34 +6,36 @@ import CurrencyExchange1 from "../currencyExchange1";
 import Currencylist from "../body/currency-list";
 import React from "react";
 import './BannerComponent.scss';
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ButtonParent from "../ButtonParent";
-
 const BannerComponent = () => {
+  const router = useRouter(); 
   return (
     <div>
       <div className="top-banner-sec-main">
         <div className="top-tab-nav-sec">
           <ul>
-            <li className="active-tab">
+            <li className="active-tab" onClick={() => router.push("/currency")}>
               <img src="images/tab-icon-1.svg"  /> <span>Currency</span>
             </li>
-            <li>
+            <li onClick={() => router.push("/send-money-abroad")}>
               <img src="images/tab-icon-2.svg" />{""}
               <span>Transfer Money Abroad</span>
             </li>
-            <li>
+            <li onClick={() => router.push("/reload-unhold-forex-card")}>
               <img src="images/tab-icon-3.svg" />{" "}
               <span>Reload/ Unload Forex Card</span>
             </li>
-            <li>
+            <li onClick={() => router.push("/international-sim-card")}>
               <img src="images/tab-icon-4.svg" />{" "}
               <span>International Sim Card</span>
             </li>
-            <li>
+            <li onClick={() => router.push("/corporate-solutions")}>
               <img src="images/tab-icon-5.svg" />{" "}
               <span>Corporate Solutions</span>
             </li>
-            <li>
+            <li onClick={() => router.push("/travel-insurance")}>
               <img src="images/tab-icon-6.svg" /> <span>Travel Insurance</span>
             </li>
           </ul>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MathCaptcha from "./MathCaptcha";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./currencyExchange.scss";
 
 const CurrencyExchange = () => {
     const [citiesData, setCitiesData] = useState([]);
@@ -323,7 +324,7 @@ const CurrencyExchange = () => {
                 <p className="mb-0">
                     <label htmlFor="">Currency Notes</label>
                 </p>
-                <p className="book-order-input-box">
+                <div className="book-order-input-box" style={{ display: "flex", alignItems: "center", gap: "0px" }}>
                     <input
                         name="userAmount"
                         value={userAmount}
@@ -331,17 +332,31 @@ const CurrencyExchange = () => {
                         type="text"
                         placeholder="Forex Amount"
                         style={{
-                            width: "350px",
-                            marginRight: "40px",
+                            width: "50%",
+                            padding: "10px",
+                            border: "1px solid #ccc",
+                            borderRight: "0",
                             background: "#f9f9f9",
                             transition: "all 0.3s ease-in-out",
                         }}
                         className={errors.userAmount ? "border border-danger" : ""}
                     />
-                    {selectedCurrency?.buy_rate
-                        ? `Rate = Rs. ${selectedCurrency?.buy_rate}`
-                        : ""}
-                </p>
+                    <input
+                        value={selectedCurrency?.buy_rate ? `Rate = ₹ ${selectedCurrency.buy_rate}` : ""}
+                        readOnly
+                        type="text"
+                        style={{
+                            width: "50%",
+                            padding: "10px",
+                            border: "1px solid #ccc",
+                            borderLeft: "0",
+                            background: "#f9f9f9",
+                            fontWeight: "bold",
+                            transition: "all 0.3s ease-in-out",
+                            textAlign: "right"
+                        }}
+                    />
+                </div>
                 <p className="book-order-input-box">
                     <input
                         name="vendorAmount"
@@ -355,7 +370,7 @@ const CurrencyExchange = () => {
 
                 <div className="total-book-order">
                     <h2>Total Amount</h2>
-                    <h2>Rs. {vendorAmount}</h2>
+                    <h2>{vendorAmount ? `₹ ${vendorAmount}` : ""}</h2>
                 </div>
                 <button className="book-btn-set" type="submit">
                     Book Buy Order

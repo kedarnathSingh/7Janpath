@@ -3,6 +3,8 @@ import next from "next";
 import './FooterComponent.scss';
 import { useState } from "react";
 import PopupModal from "../PopupModal";
+import { useRouter } from "next/navigation";
+import React from "react";
 
 const FooterComponent = () => {
 	const [isModalOpen, setIsModalOpen]=useState(false);
@@ -13,8 +15,6 @@ const FooterComponent = () => {
 			<div className="row">
 					
 				<div className="col-md-5 footer-home-menu">
-					{/* <h3>About Us</h3>
-					<p>At 7 Janpath Forex, it’s all about our esteemed customers. They are at the forefront of services we offer. Our Forex rates are the best in the city.</p> */}
 					<div className="col-md-3 footer-home-menu pt-4">
 						<h3>Quick Links</h3>
 							<ul>
@@ -23,7 +23,7 @@ const FooterComponent = () => {
 									<li><a className="dropdown-item" href="#">Currency Converter</a></li>
 									<li><a className="dropdown-item" href="#">Careers</a></li>
 									<li><a className="dropdown-item" href="#" onClick={() => setIsModalOpen(true)}>Term and Conditions</a></li>
-									<li><a className="dropdown-item" href="#">our Policies</a></li>
+									<li><a className="dropdown-item" href="#" onClick={() => setIsModalOpen(true)}>our Policies</a></li>
 									<li><a className="dropdown-item" href="#">Press release</a></li>
 									<li><a className="dropdown-item" href="#">Sitemap</a></li>	
 							</ul>
@@ -33,13 +33,13 @@ const FooterComponent = () => {
 					<div className="col-md-3 footer-home-menu">
 						<h3>Our Services </h3>
 							<ul>
-									<li><a className="dropdown-item" href="#">Home</a></li>
-									<li><a className="dropdown-item" href="#">About Us</a></li>
-									<li><a className="dropdown-item" href="#">Share & security</a></li>
-									<li><a className="dropdown-item" href="#">Financial Services</a></li>
-									<li><a className="dropdown-item" href="#">Send Money Abroad</a></li>
-									<li><a className="dropdown-item" href="#">Travel insurance</a></li>
-									<li><a className="dropdown-item" href="#">International Simcard</a></li>
+									<li><a className="dropdown-item" href="/home">Home</a></li>
+									<li><a className="dropdown-item" href="/about-us">About Us</a></li>
+									<li><a className="dropdown-item" href="#" onClick={() => setIsModalOpen(true)}>Share & security</a></li>
+									<li><a className="dropdown-item" href="/financial-services">Financial Services</a></li>
+									<li><a className="dropdown-item" href="/send-money-abroad">Send Money Abroad</a></li>
+									<li><a className="dropdown-item" href="/travel-insurance">Travel insurance</a></li>
+									<li><a className="dropdown-item" href="/international-sim-card">International Simcard</a></li>
 									
 							</ul>
 					</div>
@@ -61,14 +61,6 @@ const FooterComponent = () => {
 					<div className="col-md-10 mt-1 text-left footer-create-text">
 						Copyright © 2024 7TravelMoney
 					</div>
-
-					{/* <div className="col-md-2 mt-1 footer-social text-left">
-						<a href=""><i className="fab fa-linkedin"></i></a>
-							<a href=""><i className="fab fa-facebook-square"></i></a>
-								<a href=""><i className="fab fa-pinterest-square"></i></a>
-								<a href=""><i className="fab fa-twitter-square"></i></a>
-								<a href="">	<i className="fab fa-google-plus-square"></i></a>
-					</div> */}
 					    <PopupModal
          isOpen={isModalOpen}
          title="Terms and Conditions"
