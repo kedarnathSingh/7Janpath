@@ -12,7 +12,7 @@ const ButtonParent = () => {
         setActiveComponent("sell");
       };
   return (
-    <div className="book-order-search-box">
+    <div className="book-order-search-box max-w-2xl">
         <div className="book-order-tab-box">
           {/* Button Controls */}
           <div className="component-container">

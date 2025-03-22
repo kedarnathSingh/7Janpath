@@ -161,7 +161,7 @@ const CurrencyExchange = () => {
                 inr_amount: Number(currencyExchangeForm.vendorAmount) || 0,
                 service_charge: Number(orderSummary.service_charge || 0),
                 gst: Number(orderSummary.gst || 0),
-                request_type: "Buy",
+                request_type: "Sell",
                 status: 1,
                 created_at: new Date().toISOString(),
                 updated_at: new Date().toISOString(),
@@ -344,8 +344,8 @@ const CurrencyExchange = () => {
                     />
                     <input
                         value={
-                            selectedCurrency?.buy_rate
-                                ? `Rate = ₹ ${selectedCurrency.buy_rate}`
+                            selectedCurrency?.sell_rate
+                                ? `Rate = ₹ ${selectedCurrency.sell_rate}`
                                 : ""
                         }
                         readOnly

@@ -49,11 +49,11 @@ const AboutUsContent = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "50px",
+        padding: "50px 20px",
         position: "relative",
         overflow: "hidden",
       }}
@@ -120,6 +120,11 @@ const AboutUsContent = () => {
             to {
               opacity: 1;
               transform: translateY(0);
+            }
+          }
+          @media (max-width: 400px) {
+            .about-us-container {
+              padding: 30px 15px !important;
             }
           }
         `}
