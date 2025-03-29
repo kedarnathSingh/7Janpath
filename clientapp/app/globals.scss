@@ -1118,6 +1118,9 @@ body {
 @media screen and (max-width: 1024px) and (min-width: 769px) {}
 
 @media screen and (max-width: 768px) {
+	.book-cus-inputset {
+		flex-direction: column;
+	}
 
 	// .collapse {
 	//   visibility: collapse;
@@ -1152,7 +1155,7 @@ body {
 		position: relative;
 		width: 100%;
 		overflow: hidden;
-		min-height: 640px;
+		min-height: 770px;
 	}
 
 	.top-contect-sec {
