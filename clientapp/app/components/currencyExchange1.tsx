@@ -377,7 +377,7 @@ const CurrencyExchange = () => {
                     <h2>Total Amount</h2>
                     <h2>{vendorAmount ? `₹ ${vendorAmount}` : ""}</h2>
                 </div>
-                <button className="book-btn-set" type="submit">
+                <button className="book-btn-set buy-order" type="submit">
                     Book Sell Order
                 </button>
             </form>
