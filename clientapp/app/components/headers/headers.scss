@@ -83,10 +83,24 @@ $hover-secondary: #545b62;
     text-align: center;
   }
 
+  .navbar-collapse{
+    padding: 0px 0px;
+  }
+  .container-fluid{
+    padding: 0px;
+  }
   .rate-btn-top,
   .offer-btn-top {
     width: 100%;
     justify-content: center;
-    margin: 10px 0;
+    margin: 0px;
+  } 
+  .navbar-brand {
+    // max-height: 500px;
+    padding: 0px;
+    .logo {
+      max-height: 30px; // Adjust this value as needed
+      width: auto; // Ensures the aspect ratio remains intact
+    }
   }
 }

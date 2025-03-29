@@ -870,8 +870,8 @@ body{
 }
 .book-btn-set{
 	background: #407BFF;
-	width: 290px;
-	min-height: 56px;
+	// width: 290px;
+	// min-height: 56px;
 	margin: 0px 0px;
 	padding: 0px 0px;
 	font-size: 18px;
@@ -1016,6 +1016,19 @@ body{
   // .collapse {
   //   visibility: collapse;
   // }
+  .top-banner-sec-main{
+	width: 100%;
+	min-height: 840px;
+	background-size: cover;
+	position: relative;
+	padding-top: 12px;
+}
+  .custom-carusel .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    min-height: 640px;
+}
   .top-contect-sec{
     display: none;
   }
@@ -1023,7 +1036,9 @@ body{
     padding-left:0px!important;
   }
   .top-banner-card{
-    margin-bottom: 25px;
+
+	padding: 10px;
+	margin: 0px 10px;
   }
   .top-tab-nav-sec li span{
     display: none;
@@ -1038,9 +1053,10 @@ body{
   }
   .book-btn-set {
     background: #407BFF;
-    width: 250px;
+    // width: 350px;
     font-size: 15px;
     font-weight: 700;
+	// max-height: 56px;
   }
   .book-order-input-box label {
     font-size: 14px;
