@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 
 export default function App() {
   return (
-    <main className="wrapper">
+    <div className="wrapper">
 	<HeadersComponent />
 	<BannerComponent />
 	<BodyComponent />
 	<FooterComponent />
-    </main>
+    </div>
   // <div>
     
   // </div>

@@ -1201,6 +1201,20 @@ body {
 		width: 90%;
 	}
 
+	.why-choose-bg{
+		background: none;
+		background-color: #fff;
+		background-size: cover;
+		height: 100%;
+		.text-white{
+			color: #000 !important;
+		}
+
+	}
+	.why-choose-card-main{
+		background-color: rgba(26, 25, 29, 1.0);
+	}
+
 	.service-card-main,
 	.why-choose-card-main,
 	.testimonial-card-main {
