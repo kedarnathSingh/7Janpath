@@ -187,9 +187,9 @@ const BodyComponent = () => {
 				</div>
 			</div>
 
-      <div className="container-fluid pt-5 pb-5 why-choose-bg">	
-				<div className="container-fluid">
-					<div className="head-container-sec mb-5 pb-1">
+      <div className="container-fluid pt-5 pb-5 ">	
+				<div className="container-fluid why-choose-bg">
+					<div className="head-container-sec mb-5 pb-1 ">
 						<h5>Why Choose Us?</h5>
 						<h2 className="text-white">We Always Try To Understand Customer’s Expectation</h2>
 					</div>
@@ -229,8 +229,6 @@ const BodyComponent = () => {
 									</div>
 							</div>
 						</div>
-
-						
 						</div>
 					</div>
 				</div>

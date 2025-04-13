@@ -15,7 +15,7 @@ const FooterComponent = () => {
                     <div className="col-md-3 footer-home-menu pt-4">
                         <h3>Quick Links</h3>
                         <ul>
-                            <li><a className="dropdown-item" href="#">Special Offers</a></li>
+                            <li><a className="dropdown-item" href="/offers">Special Offers</a></li>
                             <li>
                                 <a
                                     className="dropdown-item"

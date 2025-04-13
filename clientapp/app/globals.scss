@@ -611,6 +611,7 @@ body {
 	justify-content: center;
 	gap: 20px;
 	background: rgba(26, 25, 29, 0.6);
+	// background: #000;
 }
 
 .why-choose-details h3 {
@@ -1201,8 +1202,24 @@ body {
 		width: 90%;
 	}
 
-	.service-card-main,
-	.why-choose-card-main,
+	.service-card-main
+	.why-choose-bg {
+		display: none;
+		width: 100%;
+		min-height: 560px;
+	}
+	
+	.why-choose-card-main {
+		border: 1px #4e4545 solid;
+		border-radius: 6px;
+		padding: 30px 20px;
+		display: flex;
+		justify-content: center;
+		gap: 20px;
+		// background: rgba(26, 25, 29, 0.6);
+		background: #000;
+	}
+	
 	.testimonial-card-main {
 		margin-bottom: 20px;
 		margin-left: 2px;
