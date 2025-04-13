@@ -25,7 +25,7 @@ const FooterComponent = () => {
                                         setIsConverterOpen(true); // Open Currency Converter popup
                                     }}
                                 >
-                                    Currency Converter
+                                    Currency Converter 
                                 </a>
                             </li>
                             <li><a className="dropdown-item" href="#">Careers</a></li>

@@ -43,6 +43,7 @@ const Offers = () => {
             </div>
           </div>
         </div>
+        
       </div>
 
       <FooterComponent />
