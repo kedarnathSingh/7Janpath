@@ -1,32 +1,3 @@
-// "use client";
-// import React from "react"
-// import { useEffect, useState } from "react";
-
-// const aboutUsContent = () => {
-//   const [data, setPageData] = useState([]);
-//   let updatedData: any;
-//   useEffect (() => {
-//     fetch(`${process.env.basePath}/settings/about_us`)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       setPageData(data)
-//     })
-// }, []);
-
-//   return(
-//     <div>
-//       {/* {data.map((val: any) => (
-//           {val.title}
-//       ))} */}
-//       hiii
-//   </div>
-    
-//   )
-// }
-
-// export default aboutUsContent;
-
-
 "use client";
 import React, { useEffect, useState } from "react";
 
@@ -90,22 +61,46 @@ const AboutUsContent = () => {
       >
         <h1 style={{ fontSize: "40px", fontWeight: "bold", marginBottom: "15px" }}>About Us</h1>
         <h2 style={{ fontSize: "22px", fontWeight: "lighter", marginBottom: "20px", opacity: "0.9" }}>
-          Money Exchange Service in Delhi & NCR
+          Trusted Forex Solutions in Delhi & NCR
         </h2>
         <p style={{ fontSize: "18px", lineHeight: "1.6", opacity: "0.9" }}>
-          7travel money is a Private Limited Company incorporated in the Year 2019 and has been licensed by the Reserve Bank of India (RBI) as a Full Fledged Money Changer (FFMC) to carry out International Currency Exchange / Money Exchange Activities.
+          7Travel Money is a Private Limited Company incorporated in 2019 and licensed by the Reserve Bank of India (RBI) as a Full-Fledged Money Changer (FFMC), authorized to carry out international currency exchange and money exchange activities.
         </p>
         <p style={{ fontSize: "18px", lineHeight: "1.6", opacity: "0.9" }}>
-          We aim to bridge the gap between Money changers and International Travelers. We Provide Currency Exchange in different cities of India. We are currently operating from Delhi.
+          We are a proud subsidiary of{" "}
+          <span
+            onClick={() => window.open("https://7janpathforex.com/", "_blank")}
+            style={{ color: "#00bfff", cursor: "pointer", textDecoration: "underline" }}
+          >
+            7Janpath Forex
+          </span>
+          , a trusted name in the foreign exchange industry.
         </p>
         <p style={{ fontSize: "18px", lineHeight: "1.6", opacity: "0.9" }}>
-          We offer a full suite of forex products consisting of currency notes, prepaid travel cards, traveler's cheques, demand drafts, and wire transfers in an inexpensive and convenient way. We offer Money Exchange in Delhi & NCR.
+          At 7Travel Money, our mission is to bridge the gap between money changers and international travelers by providing reliable, fast, and affordable forex services. Though we currently operate from Delhi, our services extend across multiple cities in India, offering convenient access to foreign exchange solutions.
         </p>
         <p style={{ fontSize: "18px", lineHeight: "1.6", opacity: "0.9" }}>
-          Customers can buy forex for several purposes such as Personal Travel, Business Travel, Education, Emigration, Employment, Medical, and Maintenance of close relatives staying abroad.
+          We provide a comprehensive suite of forex products including:
         </p>
-        <p style={{ fontSize: "18px", lineHeight: "1.6", opacity: "0.9" }}>
-          Read our FAQs to learn more about how to book your order and other foreign exchange-related queries.
+        <ul style={{ fontSize: "18px", lineHeight: "1.6", opacity: "0.9", listStyle: "disc", marginLeft: "20px", textAlign: "left" }}>
+          <li>Currency notes</li>
+          <li>Prepaid travel cards</li>
+          <li>Traveler’s cheques</li>
+          <li>Demand drafts</li>
+          <li>Wire transfers</li>
+        </ul>
+        <p style={{ fontSize: "18px", lineHeight: "1.6", opacity: "0.9", marginTop: "20px" }}>
+          These services are tailored to suit various purposes such as:
+        </p>
+        <ul style={{ fontSize: "18px", lineHeight: "1.6", opacity: "0.9", listStyle: "disc", marginLeft: "20px", textAlign: "left" }}>
+          <li>Personal and business travel</li>
+          <li>Overseas education</li>
+          <li>Emigration and employment abroad</li>
+          <li>Medical treatment overseas</li>
+          <li>Maintenance of close relatives staying outside India</li>
+        </ul>
+        <p style={{ fontSize: "18px", lineHeight: "1.6", opacity: "0.9", marginTop: "20px" }}>
+          Whether you need money exchange in Delhi or the broader NCR region, 7Travel Money ensures a seamless and cost-effective experience.
         </p>
       </div>
 
