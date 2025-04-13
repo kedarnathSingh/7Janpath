@@ -5,13 +5,6 @@ import Currencylist from "./currency-list";
 const BodyComponent = () => {
     return(
         <main className="main-middle-content-section pt-5 pb-5">
-
-    <div className="container-fluid pb-5">	
-				{/* <div className="container-fluid">
-					<Currencylist></Currencylist>
-				</div> */}
-			</div>
-
       <div className="container-fluid pt-5 pb-5">	
 				<div className="container-fluid">
 					<div className="head-container-sec mb-5">

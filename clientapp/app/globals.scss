@@ -1202,24 +1202,22 @@ body {
 		width: 90%;
 	}
 
-	.service-card-main
-	.why-choose-bg {
-		display: none;
-		width: 100%;
-		min-height: 560px;
+	.why-choose-bg{
+		background: none;
+		background-color: #fff;
+		background-size: cover;
+		height: 100%;
+		.text-white{
+			color: #000 !important;
+		}
+
 	}
-	
-	.why-choose-card-main {
-		border: 1px #4e4545 solid;
-		border-radius: 6px;
-		padding: 30px 20px;
-		display: flex;
-		justify-content: center;
-		gap: 20px;
-		// background: rgba(26, 25, 29, 0.6);
-		background: #000;
+	.why-choose-card-main{
+		background-color: rgba(26, 25, 29, 1.0);
 	}
-	
+
+	.service-card-main,
+	.why-choose-card-main,
 	.testimonial-card-main {
 		margin-bottom: 20px;
 		margin-left: 2px;
